@@ -9,4 +9,4 @@ EXPOSE 3000
 
 ENTRYPOINT ["python3"]
 
-CMD ["app.py"]
+CMD ["/app/frontend/app.py"]
