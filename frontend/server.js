@@ -21,24 +21,22 @@ router.use(function (req, res, next) {
 });
 
 router.get('/', function (req, res) {
-    res.sendFile(path + 'index.html');
+    res.sendFile(__dirname + '/index.html');
 });
 
 router.get('/chatbot', function (req, res) {
-    res.sendFile(path + 'chatbot.html');
+    res.sendFile(__dirname + '/chatbot.html');
 });
 
 router.get('/consent', function (req, res) {
-    res.sendFile(path + 'consent.html');
+    res.sendFile(__dirname + '/consent.html');
 });
 
 router.get('/panas', function (req, res) {
-    res.sendFile(path + 'panas.html');
+    res.sendFile(__dirname + '/panas.html');
 });
 
-app.use(express.static(path));
-app.use('/', router);
 
 app.listen(PORT, function () {
     console.log('App listening on port 3000!')
-})
+});
