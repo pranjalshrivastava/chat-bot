@@ -27,9 +27,13 @@ def panas():
 def index():
     return render_template("index.html")
 
+@app.route('/chatbot')
+def chatbot():
+    return render_template("chatbot.html")
+
 if __name__ == "__main__":
     try:
         #app.debug = True
-        app.run(host='0.0.0.0',port=5001)
+        app.run(host='0.0.0.0',port=3000)
     finally:
         print("Exit")

@@ -1,13 +1,16 @@
-FROM ubuntu
-
-RUN apt-get update && apt-get -y install curl gnupg && curl -sL https://deb.nodesource.com/setup_13.x  | bash - && apt-get -y install nodejs
-
+FROM tiangolo/uwsgi-nginx-flask:python3.8
 
 WORKDIR /app/frontend
 COPY . /app/frontend
-
-RUN npm install 
+#COPY ./static /app/website/static
+#COPY ./templates /app/website/templates
+#COPY ./static/css /app/website/static/css
+#COPY ./static/images /app/website/static/images
+#COPY ./static/img /app/website/static/img
+#COPY ./static/js /app/website/static/js
 
 VOLUME /app/frontend
 
-CMD npm start
+EXPOSE 3000
+
+CMD app.py
