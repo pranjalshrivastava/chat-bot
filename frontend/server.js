@@ -11,16 +11,12 @@ console.log(`Server is running on port ${PORT}`);
 app.use(cors())
 app.use(express.static(path.join(__dirname, 'static')));
 
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/consent.html');
+});
+
 app.get('/chatbot', (req, res) => {
     res.sendFile(__dirname + '/chatbot.html');
-});
-
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/index.html');
-});
-
-app.get('/consent', function (req, res) {
-    res.sendFile(__dirname + '/consent.html');
 });
 
 app.get('/panas', function (req, res) {
