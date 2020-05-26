@@ -27,14 +27,9 @@ def panas():
 def index():
     return render_template("index.html")
 
-@app.route('/bot')
-def bot():
-    return render_template("bot.html")
-
-
 if __name__ == "__main__":
     try:
         #app.debug = True
-        app.run(host='0.0.0.0',port=3000)
+        app.run(host='0.0.0.0',port=80)
     finally:
         print("Exit")
