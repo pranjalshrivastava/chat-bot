@@ -13,4 +13,4 @@ VOLUME /app/frontend
 
 EXPOSE 3000
 
-CMD ["python", "app.py"]
+CMD /app/frontend/app.py
