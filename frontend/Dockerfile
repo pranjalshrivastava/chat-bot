@@ -1,7 +1,5 @@
 FROM ubuntu
 
-RUN apt-get update && app-get install -y/
-
 WORKDIR /app/frontend
 COPY . /app/frontend
 
