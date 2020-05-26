@@ -56,7 +56,7 @@ $(document).ready(function () {
             localStorage.setItem("panas", "-1");
         }
 
-        window.location.replace(window.location.href.replace("panas",'index'))
+        window.location.replace(window.location.href.replace("panas",'chatbot'))
 
     });
     
