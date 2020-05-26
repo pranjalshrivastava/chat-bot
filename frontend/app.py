@@ -5,7 +5,6 @@ from os import listdir
 import os
 import logging
 from logging.handlers import RotatingFileHandler
-import pyodbc
 import random
 
 
