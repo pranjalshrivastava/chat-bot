@@ -15,23 +15,14 @@ app.get('/chatbot', (req, res) => {
     res.sendFile(__dirname + '/chatbot.html');
 });
 
-//router.use(function (req, res, next) {
-//    console.log('/' + req.method);
-//    next();
-//});
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/index.html');
+});
 
-//router.get('/', function (req, res) {
-//    res.sendFile(__dirname + '/index.html');
-//});
+app.get('/consent', function (req, res) {
+    res.sendFile(__dirname + '/consent.html');
+});
 
-//router.get('/chatbot', function (req, res) {
-//    res.sendFile(__dirname + '/chatbot.html');
-//});
-
-//router.get('/consent', function (req, res) {
-//    res.sendFile(__dirname + '/consent.html');
-//});
-
-//router.get('/panas', function (req, res) {
-//    res.sendFile(__dirname + '/panas.html');
-//});
+app.get('/panas', function (req, res) {
+    res.sendFile(__dirname + '/panas.html');
+});
