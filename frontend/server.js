@@ -11,32 +11,27 @@ console.log(`Server is running on port ${PORT}`);
 app.use(cors())
 app.use(express.static(path.join(__dirname, 'static')));
 
-//app.get('/', (req, res) => {
-//    res.sendFile(__dirname + '/index.html');
-//});
-
-router.use(function (req, res, next) {
-    console.log('/' + req.method);
-    next();
-});
-
-router.get('/', function (req, res) {
-    res.sendFile(__dirname + '/index.html');
-});
-
-router.get('/chatbot', function (req, res) {
+app.get('/chatbot', (req, res) => {
     res.sendFile(__dirname + '/chatbot.html');
 });
 
-router.get('/consent', function (req, res) {
-    res.sendFile(__dirname + '/consent.html');
-});
+//router.use(function (req, res, next) {
+//    console.log('/' + req.method);
+//    next();
+//});
 
-router.get('/panas', function (req, res) {
-    res.sendFile(__dirname + '/panas.html');
-});
+//router.get('/', function (req, res) {
+//    res.sendFile(__dirname + '/index.html');
+//});
 
+//router.get('/chatbot', function (req, res) {
+//    res.sendFile(__dirname + '/chatbot.html');
+//});
 
-app.listen(PORT, function () {
-    console.log('App listening on port 3000!')
-});
+//router.get('/consent', function (req, res) {
+//    res.sendFile(__dirname + '/consent.html');
+//});
+
+//router.get('/panas', function (req, res) {
+//    res.sendFile(__dirname + '/panas.html');
+//});
