@@ -1,11 +1,27 @@
+//Bot pop-up intro
+document.addEventListener('DOMContentLoaded', function () {
+	var elemsTap = document.querySelector('.tap-target');
+	var instancesTap = M.TapTarget.init(elemsTap, {});
+	instancesTap.open();
+	setTimeout(function () { instancesTap.close(); }, 4000);
+
+});
+
 // ========================== greet user proactively ========================
+//initialization
 $(document).ready(function () {
+
+
+	//Bot pop-up intro
+	$("div").removeClass("tap-target-origin")
 
 	//drop down menu for close, restart conversation & clear the chats.
 	$('.dropdown-trigger').dropdown();
 
 	//initiate the modal for displaying the charts, if you dont have charts, then you comment the below line
 	$('.modal').modal();
+
+
 
 	//enable this if u have configured the bot to start the conversation. 
 	// showBotTyping();
