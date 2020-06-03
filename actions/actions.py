@@ -8,20 +8,20 @@
 # This is a simple example for a custom action which utters "Hello World!"
 
 from typing import Any, Text, Dict, List
-
-import requests
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import UserUtteranceReverted
 
-class ActionHelloWorld(Action):
+
+class ActionGreetUser(Action):
 
     def name(self) -> Text:
-        return "action_hello_world"
+        return "action_greet_user"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-        dispatcher.utter_message(text="Hey! How are you?")
 
-        return []
+        dispatcher.utter_message("Hey there!")
+
+        return [UserUtteranceReverted()]

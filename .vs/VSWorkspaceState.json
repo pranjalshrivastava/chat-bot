@@ -3,9 +3,11 @@
     "",
     "\\actions",
     "\\backend",
+    "\\backend\\data",
     "\\frontend",
+    "\\frontend\\static",
     "\\frontend\\static\\js"
   ],
-  "SelectedNode": "\\frontend\\chatbot.html",
+  "SelectedNode": "\\frontend\\static\\panas.js",
   "PreviewInSolutionExplorer": false
 }

@@ -6,6 +6,15 @@
 - good evening
 - hey there
 
+## intent:introduction
+- my name is [Alex](name)
+- my name's [Mary](name)
+- call me [Kevin](name)
+- [James](name)
+- it's [Sarah](name)
+- people call me [Christopher](name)
+- [Daniel](name) is my name
+
 ## intent:goodbye
 - bye
 - goodbye
@@ -18,6 +27,7 @@
 - of course
 - that sounds good
 - correct
+- ok
 
 ## intent:deny
 - no
@@ -36,7 +46,14 @@
 - I am feeling very good
 - I am great
 - I'm good
-- ya m happy
+- good
+- not bad
+- so good
+- nice
+- fine
+- pretty good
+- well
+- couldn't be better
 
 ## intent:mood_unhappy
 - sad
@@ -47,11 +64,20 @@
 - awful
 - terrible
 - not very good
+- not so well
 - extremely sad
 - so sad
+- not well
+- not good
+- so so
+- could be better
 
 ## intent:bot_challenge
 - are you a bot?
 - are you a human?
 - am I talking to a bot?
 - am I talking to a human?
+
+## intent:insult
+- stupid bot
+- I don't want to talk to you

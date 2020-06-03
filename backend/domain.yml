@@ -1,25 +1,66 @@
 intents:
   - greet
   - goodbye
+  - introduction
   - affirm
   - deny
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - insult
+
+entities:
+  - name
+  
+slots:
+  name:
+    type: text
 
 actions:
-  - action_hello_world
-  
+  - action_greet_user
+
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Hello, I'm Bot!"
+  - text: "Hi! My name is Bot."
+  - text: "Hi there! I'm Bot."
+  - text: "Hey, Bot here!"
+  - text: "Hey there, it's Bot!"
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_ask_name:
+  - text: "What's your name?"
+  - text: "How should I call you?"
+  - text: "Mind introducing yourself?"
 
-  utter_did_that_help:
-  - text: "Did that help you?"
+  utter_greet_name:
+  - text: "Hello {name}!"
+  - text: "Hey there, {name}!"
+  - text: "Hi {name}, it's Bot!"
+  - text: "Hi {name}, nice seeing you!"
+
+  utter_nice_to_meet:
+  - text: "Nice meeting you, {name}!"
+  - text: "Nice to meet you, {name}!"
+
+  utter_ask_how_doing:
+  - text: "How are you doing today?"
+  - text: "How are you feeling today?"
+  - text: "How are you doing?"
+  - text: "How are you?"
+  - text: "How are you today?"
+
+  utter_ask_color:
+  - text: "what color would you like?"
+    buttons:
+    - title: "blue"
+      payload: '/choose{"color": "blue"}'
+    - title: "red"
+      payload: '/choose{"color": "red"}'
+
+  utter_ask_why_bad:
+  - text: "Sorry to hear that! Can you tell me more about it?"
+  - text: "I'm sorry that you're not feeling well. Can you please tell me why?"
+  - text: "I'm sorry to hear that. Why so? Tell me about it."
 
   utter_happy:
   - text: "Great, carry on!"
@@ -29,6 +70,9 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_respond_insult:
+  - text: "That's not very nice."
 
 session_config:
   session_expiration_time: 60
