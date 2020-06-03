@@ -2,7 +2,7 @@
 * greet
   - utter_ask_name
 * introduction
-  - utter_nice_to_meet
+  - action_hello_world
   - utter_ask_how_doing
 > check_asked_mood
 
