@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	var elemsTap = document.querySelector('.tap-target');
 	var instancesTap = M.TapTarget.init(elemsTap, {});
 	instancesTap.open();
-	setTimeout(function () { instancesTap.close(); }, 40000);
+	setTimeout(function () { instancesTap.close(); }, 4000);
 
 });
 
@@ -56,7 +56,7 @@ function action_trigger() {
 
 	// send an event to the bot, so that bot can start the conversation by greeting the user
 	$.ajax({
-		url: `http://127.0.0.1/rasa/conversations/${user_id}/execute`,
+		url: `http://127.0.0.11/rasa/conversations/${user_id}/execute`,
 		type: "POST",
 		contentType: "application/json",
 		data: JSON.stringify({ "name": action_name, "policy": "MappingPolicy", "confidence": "0.98" }),

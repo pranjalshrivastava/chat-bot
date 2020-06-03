@@ -1,5 +1,5 @@
 intents:
-  - greet: {triggers: action_greet_user}
+  - greet
   - goodbye
   - introduction
   - affirm
