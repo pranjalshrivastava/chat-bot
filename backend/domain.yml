@@ -18,6 +18,7 @@ slots:
 
 actions:
   - action_greet_user
+  - action_hello_world
 
 responses:
   utter_greet:
