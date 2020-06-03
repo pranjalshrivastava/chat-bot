@@ -1,10 +1,20 @@
 FROM rasa/rasa-sdk:latest
 
- # The Rasa SDK image runs as non-root user by default. Hence, you have to switch
- # back to the `root` user if you want to install additional dependencies
+# Use subdirectory as working directory
+WORKDIR /app
+
+# Copy any additional custom requirements, if necessary (uncomment next line)
+# COPY actions/requirements-actions.txt ./
+
+# Change back to root user to install dependencies
 USER root
 
 RUN pip3 install recognizers-text-suite
+# Install extra requirements for actions code, if necessary (uncomment next line)
+# RUN pip install -r requirements-actions.txt
 
-# Switch back to a non-root user
+# Copy actions folder to working directory
+COPY ./actions /app/actions
+
+# By best practices, don't run the code with root user
 USER 1001
