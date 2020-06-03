@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	var elemsTap = document.querySelector('.tap-target');
 	var instancesTap = M.TapTarget.init(elemsTap, {});
 	instancesTap.open();
-	setTimeout(function () { instancesTap.close(); }, 4000);
+	setTimeout(function () { instancesTap.close(); }, 40000);
 
 });
 
@@ -24,8 +24,8 @@ $(document).ready(function () {
 
 
 	//enable this if u have configured the bot to start the conversation. 
-	// showBotTyping();
-	// $("#userInput").prop('disabled', true);
+	showBotTyping();
+	$("#userInput").prop('disabled', true);
 
 	//global variables
 	action_name = "action_greet_user";
