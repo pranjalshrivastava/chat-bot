@@ -8,8 +8,8 @@ $(document).ready(function () {
 	$('.modal').modal();
 
 	//enable this if u have configured the bot to start the conversation. 
-	// showBotTyping();
-	// $("#userInput").prop('disabled', true);
+	showBotTyping();
+	$("#userInput").prop('disabled', true);
 
 	//global variables
 	action_name = "action_greet_user";
@@ -153,7 +153,7 @@ function send(message) {
 				$("#userInput").prop('disabled', false);
 
 				//if you want the bot to start the conversation after restart
-				// action_trigger();
+				action_trigger();
 				return;
 			}
 			setBotResponse(botResponse);
@@ -165,8 +165,8 @@ function send(message) {
 				// $("#userInput").prop('disabled', false);
 
 				//if you want the bot to start the conversation after the restart action.
-				// action_trigger();
-				// return;
+				action_trigger();
+				return;
 			}
 
 			// if there is no response from rasa server
@@ -182,16 +182,16 @@ function setBotResponse(response) {
 	//display bot response after 500 milliseconds
 	setTimeout(function () {
 		hideBotTyping();
-		if (response.length < 1) {
-			//if there is no response from Rasa, send  fallback message to the user
-			var fallbackMsg = "I am facing some issues, please try again later!!!";
+		//if (response.length < 1) {
+		//	//if there is no response from Rasa, send  fallback message to the user
+		//	var fallbackMsg = "I am facing some issues, please try again later!!!";
 
-			var BotResponse = '<img class="botAvatar" src="/img/botAvatar.png"/><p class="botMsg">' + fallbackMsg + '</p><div class="clearfix"></div>';
+		//	var BotResponse = '<img class="botAvatar" src="/img/botAvatar.png"/><p class="botMsg">' + fallbackMsg + '</p><div class="clearfix"></div>';
 
-			$(BotResponse).appendTo(".chats").hide().fadeIn(1000);
-			scrollToBottomOfResults();
-		}
-		else {
+		//	$(BotResponse).appendTo(".chats").hide().fadeIn(1000);
+		//	scrollToBottomOfResults();
+		//}
+		//else {
 
 			//if we get response from Rasa
 			for (i = 0; i < response.length; i++) {
@@ -274,7 +274,7 @@ function setBotResponse(response) {
 						createCollapsible(data);
 					}
 				}
-			}
+			//}
 			scrollToBottomOfResults();
 		}
 	}, 500);
