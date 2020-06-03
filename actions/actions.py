@@ -20,18 +20,6 @@ class ActionGreetUser(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message("Hey there!")
+        dispatcher.utter_template("utter_greet", tracker)
 
         return [UserUtteranceReverted()]
-
-
-class ActionHelloWorld(Action):
-
-    def name(self) -> Text:
-        return "action_hello_world"
-
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        dispatcher.utter_message("Hello World!")
-
-        return []
