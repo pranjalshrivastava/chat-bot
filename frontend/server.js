@@ -22,3 +22,14 @@ app.get('/chatbot', (req, res) => {
 app.get('/panas', function (req, res) {
     res.sendFile(__dirname + '/panas.html');
 });
+
+let student = {
+    name: 'Mike',
+    age: 23,
+    gender: 'Male',
+    department: 'English',
+    car: 'Honda'
+};
+
+let data = JSON.stringify(student);
+fs.writeFileSync('student-1.json', data);

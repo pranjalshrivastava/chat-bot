@@ -11,6 +11,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import UserUtteranceReverted
+import requests
 
 
 class ActionGreetUser(Action):
@@ -23,3 +24,4 @@ class ActionGreetUser(Action):
         dispatcher.utter_template("utter_greet", tracker)
 
         return [UserUtteranceReverted()]
+
