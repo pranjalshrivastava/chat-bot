@@ -51,14 +51,12 @@ $(document).ready(function () {
 
         if (positive >= negative) {
             localStorage.setItem("panas", "1");
-            //data["score"].push("positive");
         }
         else if (positive < negative) {
             localStorage.setItem("panas", "-1");
-            //data["score"].push("negative");
         }
 
-        window.location.replace(window.location.href.replace("panas","chatbot"))
+        window.location.replace(window.location.href.replace("panas",'chatbot'))
 
     });
     
