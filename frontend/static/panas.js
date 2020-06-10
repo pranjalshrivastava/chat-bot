@@ -49,25 +49,14 @@ $(document).ready(function () {
 
         alert("positive: " + positive + "\n" + "negative: " + negative + "\n")
 
-        'use strict';
-
-        const fs = require('fs');
-
-        let rawdata = fs.readFileSync('/backend/data/panas.json');
-        let data = JSON.parse(rawdata);
-        console.log(data);
-
         if (positive >= negative) {
-            //localStorage.setItem("panas", "1");
-            data["score"].push("positive");
+            localStorage.setItem("panas", "1");
+            //data["score"].push("positive");
         }
         else if (positive < negative) {
-            //localStorage.setItem("panas", "-1");
-            data["score"].push("negative");
+            localStorage.setItem("panas", "-1");
+            //data["score"].push("negative");
         }
-
-        let score = JSON.stringify(data);
-        fs.writeFileSync('/backend/data/panas.json', score);
 
         window.location.replace(window.location.href.replace("panas","chatbot"))
 
