@@ -8,9 +8,21 @@ services:
       ports:
         - 80:80
       depends_on:
-        - action_server
-        - rasa
         - chatbot_ui
+        - rasa
+        - action_server
+    chatbot_ui:
+      container_name: "chatbot_ui"
+      build: 
+        context: frontend
+      ports: 
+        - "3000:3000"
+    rasa:
+      container_name: "rasa_server"
+      build: 
+        context: backend
+      ports: 
+        - "5005:5005"
     action_server:
       container_name: "action_server"
       image: rasa/rasa-sdk:latest
@@ -18,17 +30,7 @@ services:
         context: actions
       volumes:
         - ./actions:/app/actions
+      depends_on:
+        - chatbot_ui
       ports:
-        - "5055:5055"  
-    rasa:
-      container_name: "rasa_server"
-      build: 
-        context: backend
-      ports: 
-        - "5005:5005"
-    chatbot_ui:
-      container_name: "chatbot_ui"
-      build: 
-        context: frontend
-      ports: 
-        - "3000:3000"
+        - "5055:5055"

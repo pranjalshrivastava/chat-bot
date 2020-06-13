@@ -23,13 +23,13 @@ app.get('/panas', function (req, res) {
     res.sendFile(__dirname + '/panas.html');
 });
 
-let student = {
-    name: 'Mike',
-    age: 23,
-    gender: 'Male',
-    department: 'English',
-    car: 'Honda'
-};
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-let data = JSON.stringify(student);
-fs.writeFileSync('student-1.json', data);
+const fs = require('fs');
+app.post('/ajax_check', function (req, res) {
+    var panasscore = req.body.score;
+    let data = JSON.stringify({ score: panasscore });
+    fs.writeFileSync('panas.json', data);
+})

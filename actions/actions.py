@@ -23,3 +23,19 @@ class ActionGreetUser(Action):
         dispatcher.utter_template("utter_greet", tracker)
 
         return [UserUtteranceReverted()]
+
+
+class GetPanasScore(Action):
+
+    def name(self) -> Text:
+        return "action_get_panas_score"
+
+    def run(self, dispatcher, tracker, domain):
+        with open('frontend/panas.json') as f:
+            data = json.load(f)
+        score = data["score"][-1]
+        if score == "1":
+            dispatcher.utter_message("Panas score positive :)")
+        if score == "0":
+            dispatcher.utter_message("Panas score negative :(")
+        return [SlotSet("panas_score", score)]

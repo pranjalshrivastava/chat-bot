@@ -15,9 +15,15 @@ entities:
 slots:
   name:
     type: text
+  panas_score:
+    type: categorical
+    values:
+    - 1
+    - 0
 
 actions:
   - action_greet_user
+  - action_get_panas_score
 
 responses:
   utter_greet:

@@ -9,12 +9,16 @@
 ## happy path 1
 > check_asked_mood
 * mood_great
+  - action_get_panas_score
+  - slot{"panas_score" : "positive"}
   - utter_happy
 
 ## happy path 2
 > check_asked_mood
 * mood_great
-  - utter_happy
+  - action_get_panas_score
+  - slot{"panas_score" : "negative"}
+  - utter_ask_why_bad
 * goodbye
   - utter_goodbye
 

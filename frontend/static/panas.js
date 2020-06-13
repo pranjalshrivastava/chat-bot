@@ -50,16 +50,21 @@ $(document).ready(function () {
         alert("positive: " + positive + "\n" + "negative: " + negative + "\n")
 
         if (positive >= negative) {
-            localStorage.setItem("panas", "1");
+            window.panas = 1;
         }
         else if (positive < negative) {
-            localStorage.setItem("panas", "-1");
+            window.panas = 0;
         }
 
-        window.location.replace(window.location.href.replace("panas",'chatbot'))
+        var panasscore = window.panas;
+        $.ajax({
+            type: 'POST',
+            url: '/ajax_check',
+            data: { score: panasscore },
+            dataType: 'json',
+        });
 
+        window.location.replace(window.location.href.replace("panas", 'chatbot'))
     });
     
 });
-
-

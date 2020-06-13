@@ -5,9 +5,8 @@
     "\\backend",
     "\\backend\\data",
     "\\frontend",
-    "\\frontend\\static",
-    "\\frontend\\static\\js"
+    "\\frontend\\static"
   ],
-  "SelectedNode": "\\frontend\\static\\panas.js",
+  "SelectedNode": "\\frontend\\static\\main.js",
   "PreviewInSolutionExplorer": false
 }
