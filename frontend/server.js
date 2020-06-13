@@ -32,4 +32,5 @@ app.post('/ajax_check', function (req, res) {
     var panasscore = req.body.score;
     let data = JSON.stringify({ score: panasscore });
     fs.writeFileSync('panas.json', data);
+    console.log(panasscore);
 })

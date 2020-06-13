@@ -33,9 +33,13 @@ class GetPanasScore(Action):
     def run(self, dispatcher, tracker, domain):
         with open('frontend/panas.json') as f:
             data = json.load(f)
-        score = data["score"][-1]
-        if score == "1":
-            dispatcher.utter_message("Panas score positive :)")
-        if score == "0":
-            dispatcher.utter_message("Panas score negative :(")
-        return [SlotSet("panas_score", score)]
+        if data:
+            score = data["score"][-1]
+            if score == "1":
+                dispatcher.utter_message("Panas score positive :)")
+            if score == "0":
+                dispatcher.utter_message("Panas score negative :(")
+            return [SlotSet("panas_score", score)]
+        else:
+            print("No Panas score found.")
+            return [SlotSet("panas_score", "Not found")]
