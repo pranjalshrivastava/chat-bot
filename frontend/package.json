@@ -2,9 +2,8 @@
   "name": "chatbot_ui",
   "version": "1.0.0",
   "description": "ChatBot widget easy to connect to RASA bot through REST channel",
-  "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
