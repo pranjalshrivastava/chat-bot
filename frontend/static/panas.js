@@ -59,7 +59,7 @@ $(document).ready(function () {
         var panasscore = window.panas;
         $.ajax({
             type: 'POST',
-            url: '/ajax_check',
+            url: 'http://35.237.71.46/ajax_check',
             data: { score: panasscore },
             dataType: 'json',
         });
