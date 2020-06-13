@@ -28,9 +28,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const fs = require('fs');
-app.post('http://35.237.71.46/ajax_check', function (req, res) {
+app.post('/ajax_check', function (req, res) {
     var panasscore = req.body.score;
     let data = JSON.stringify({ score: panasscore });
     fs.writeFileSync('panas.json', data);
-    console.log(panasscore);
 })
