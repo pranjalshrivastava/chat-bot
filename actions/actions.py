@@ -32,10 +32,14 @@ class GetPanasScore(Action):
         return "action_get_panas_score"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        PATH = "https://reqres.in/api/users?page=2"
+        PATH = "http://35.237.71.46/panas-score"
         data = requests.get(url=PATH).json()
         if data:
-            score = data["page"]
+            score = data["score"]
+            if score == "1":
+                dispatcher.utter_message("Your Panas score is positive!")
+            if score == "0":
+                dispatcher.utter_message("Your Panas score is negative!")
             return [SlotSet("panas_score", score)]
         else:
             return [SlotSet("panas_score", "no score")]
