@@ -28,8 +28,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const fs = require('fs');
+
+//app.post('http://chatbot_ui:3000/ajax_check', function (req, res) {
+//    var panasscore = req.body.score;
+//    let data = JSON.stringify({ score: panasscore });
+//    fs.writeFileSync('panas.json', data);
+//})
+
 app.post('/ajax_check', function (req, res) {
-    var panasscore = req.body.score;
-    let data = JSON.stringify({ score: panasscore });
-    fs.writeFileSync('panas.json', data);
+    global.panasscore = req.body;
+    console.log(global.panasscore);
+})
+
+app.get('/panas-score', function (req, res) {
+    res.end(JSON.stringify(global.panasscore));
 })

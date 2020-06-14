@@ -5,8 +5,9 @@
     "\\backend",
     "\\backend\\data",
     "\\frontend",
-    "\\frontend\\static"
+    "\\frontend\\static",
+    "\\frontend\\static\\js"
   ],
-  "SelectedNode": "\\frontend\\static\\main.js",
+  "SelectedNode": "\\frontend\\server.js",
   "PreviewInSolutionExplorer": false
 }

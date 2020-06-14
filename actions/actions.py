@@ -31,9 +31,9 @@ class GetPanasScore(Action):
         return "action_get_panas_score"
 
     def run(self, dispatcher, tracker, domain):
-        with open('/app/frontend/panas.json') as f:
-            data = json.load(f)
-        score = data["score"][-1]
+        PATH = "http://chatbot-ui:3000/panas-score"
+        data = requests.get(url=PATH).json()
+        score = data["score"]
         if score == "1":
             dispatcher.utter_message("Panas score positive :)")
         if score == "0":
