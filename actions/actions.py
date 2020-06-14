@@ -15,6 +15,7 @@ import socket
 host_name = socket.gethostname() 
 host_ip = socket.gethostbyname(host_name) 
 import requests
+import json
 
 class ActionGreetUser(Action):
 
@@ -36,9 +37,9 @@ class GetPanasScore(Action):
     def run(self, dispatcher, tracker, domain):
         PATH = "https://reqres.in/api/users?page=2"
         data = requests.get(url=PATH).json()
-        score = data["page"]
-        if score == "2":
-            dispatcher.utter_message("Your Panas score is positive!")
-        if score == "0":
-            dispatcher.utter_message("Your Panas score is negative!")
-        return [SlotSet("panas_score", score)]
+        if data:
+            score = data["page"]
+            return [SlotSet("panas_score", score)]
+        else:
+            return [SlotSet("panas_score", "no score")]
+        

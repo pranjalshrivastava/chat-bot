@@ -5,6 +5,7 @@ FROM rasa/rasa-sdk:latest
 USER root
 
 RUN pip3 install recognizers-text-suite
+RUN pip3 install requests
 
 # Switch back to a non-root user
 USER 1001
