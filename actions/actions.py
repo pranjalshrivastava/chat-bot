@@ -14,7 +14,7 @@ from rasa_sdk.events import UserUtteranceReverted
 import socket
 host_name = socket.gethostname() 
 host_ip = socket.gethostbyname(host_name) 
-
+import requests
 
 class ActionGreetUser(Action):
 
@@ -34,7 +34,7 @@ class GetPanasScore(Action):
         return "action_get_panas_score"
 
     def run(self, dispatcher, tracker, domain):
-        PATH = "http://35.237.71.46/panas-score"
+        PATH = "http://" + host_ip + "/panas-score"
         data = requests.get(url=PATH).json()
         score = data["score"]
         return [SlotSet("panas_score", score)]
