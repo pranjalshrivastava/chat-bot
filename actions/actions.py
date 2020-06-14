@@ -11,6 +11,9 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import UserUtteranceReverted
+import socket
+host_name = socket.gethostname() 
+host_ip = socket.gethostbyname(host_name) 
 
 
 class ActionGreetUser(Action):
@@ -31,7 +34,7 @@ class GetPanasScore(Action):
         return "action_get_panas_score"
 
     def run(self, dispatcher, tracker, domain):
-        PATH = "http://chatbot-ui:3000/panas-score"
+        PATH = "http://"+host_ip+"/panas-score"
         data = requests.get(url=PATH).json()
         score = data["score"]
         if score == "1":
