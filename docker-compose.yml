@@ -30,7 +30,5 @@ services:
         context: actions
       volumes:
         - ./actions:/app/actions
-      depends_on:
-        - chatbot_ui
       ports:
         - "5055:5055"

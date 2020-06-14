@@ -31,7 +31,7 @@ class GetPanasScore(Action):
         return "action_get_panas_score"
 
     def run(self, dispatcher, tracker, domain):
-        with open('frontend/panas.json') as f:
+        with open('/app/frontend/panas.json') as f:
             data = json.load(f)
         score = data["score"][-1]
         if score == "1":
