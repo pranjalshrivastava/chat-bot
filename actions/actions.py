@@ -11,9 +11,6 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import UserUtteranceReverted
-import socket
-host_name = socket.gethostname() 
-host_ip = socket.gethostbyname(host_name) 
 import requests
 import json
 
@@ -34,7 +31,7 @@ class GetPanasScore(Action):
     def name(self) -> Text:
         return "action_get_panas_score"
 
-    def run(self, dispatcher, tracker, domain):
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         PATH = "https://reqres.in/api/users?page=2"
         data = requests.get(url=PATH).json()
         if data:

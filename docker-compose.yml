@@ -36,8 +36,9 @@ services:
         context: actions
       volumes:
         - ./actions:/app/actions
-      links:
-        - "chatbot_ui"
+      depends_on:
+        - rasa
+        - chatbot_ui
       ports:
         - "5055:5055"
       networks:
