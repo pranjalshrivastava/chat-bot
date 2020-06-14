@@ -34,7 +34,7 @@ class GetPanasScore(Action):
         return "action_get_panas_score"
 
     def run(self, dispatcher, tracker, domain):
-        PATH = "http://35.237.71.46/panas-score"
+        PATH = "http://chatbot_ui:3000/panas-score"
         data = requests.get(url=PATH).json()
         score = data["score"]
         if score == "1":
