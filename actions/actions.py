@@ -34,10 +34,10 @@ class GetPanasScore(Action):
         return "action_get_panas_score"
 
     def run(self, dispatcher, tracker, domain):
-        PATH = "http://chatbot_ui:3000/panas-score"
+        PATH = "https://reqres.in/api/users?page=2"
         data = requests.get(url=PATH).json()
-        score = data["score"]
-        if score == "1":
+        score = data["page"]
+        if score == "2":
             dispatcher.utter_message("Your Panas score is positive!")
         if score == "0":
             dispatcher.utter_message("Your Panas score is negative!")
