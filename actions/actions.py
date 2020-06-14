@@ -13,9 +13,6 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import UserUtteranceReverted, SlotSet
 import requests
 import json
-import socket
-host_name = socket.gethostname() 
-host_ip = socket.gethostbyname(host_name) 
 
 class ActionGreetUser(Action):
 
@@ -35,14 +32,12 @@ class GetPanasScore(Action):
         return "action_get_panas_score"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        PATH = "http://" + host_ip + "/panas-score"
+        PATH = "http://35.237.71.46/panas-score"
         data = requests.get(url=PATH).json()
         if data:
             score = data["score"]
-            if score == "1":
-                dispatcher.utter_message("Your Panas score is positive!")
             if score == "0":
-                dispatcher.utter_message("Your Panas score is negative!")
+                dispatcher.utter_message("But your Panas score is negative!")
             return [SlotSet("panas_score", score)]
         else:
             return [SlotSet("panas_score", "no score")]
