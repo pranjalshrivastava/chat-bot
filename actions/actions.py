@@ -37,8 +37,4 @@ class GetPanasScore(Action):
         PATH = "http://35.237.71.46/panas-score"
         data = requests.get(url=PATH).json()
         score = data["score"]
-        if score == "1":
-            dispatcher.utter_message("Panas score positive :)")
-        if score == "0":
-            dispatcher.utter_message("Panas score negative :(")
         return [SlotSet("panas_score", score)]
