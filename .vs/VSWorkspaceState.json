@@ -8,6 +8,6 @@
     "\\frontend\\static",
     "\\frontend\\static\\js"
   ],
-  "SelectedNode": "\\frontend\\server.js",
+  "SelectedNode": "\\docker-compose.yml",
   "PreviewInSolutionExplorer": false
 }
