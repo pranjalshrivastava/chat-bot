@@ -13,7 +13,6 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import UserUtteranceReverted, SlotSet
 import requests
 import json
-import socket
 
 class ActionGreetUser(Action):
 
@@ -35,7 +34,7 @@ class GetPanasScore(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         host_name = socket.gethostname() 
         host_ip = socket.gethostbyname(host_name) 
-        PATH = "http://" + host_ip + "/panas-score"
+        PATH = "http://35.237.71.46/panas-score"
         data = requests.get(url=PATH).json()
         if data:
             score = data["score"]
