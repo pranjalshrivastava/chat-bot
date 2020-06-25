@@ -6,6 +6,7 @@ USER root
 
 RUN pip3 install recognizers-text-suite
 RUN pip3 install requests
+RUN sudo apt-get install python3-pandas
 
 # Switch back to a non-root user
 USER 1001
