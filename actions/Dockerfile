@@ -10,7 +10,7 @@ RUN pip3 install recognizers-text-suite && \
 pip3 install requests && \
 pip3 install pandas
 
-COPY ./actions /app/actions
+COPY . /app
 
 # Switch back to a non-root user
 USER 1001
