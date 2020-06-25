@@ -17,7 +17,7 @@ import json
 import csv
 import pandas as pd
 
-INTENT_DESCRIPTION_MAPPING_PATH = "/app/data/intent_description_mapping.csv"
+INTENT_DESCRIPTION_MAPPING_PATH = "intent_description_mapping.csv"
 ACTION_DEFAULT_ASK_REPHRASE_NAME = 'action_default_ask_rephrase'
 
 class GetPanasScore(Action):
