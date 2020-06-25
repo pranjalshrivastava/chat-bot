@@ -34,6 +34,8 @@ services:
       image: rasa/rasa-sdk:latest
       build: 
         context: actions
+      volumes:
+        - ./actions:/app/actions
       depends_on:
         - rasa
         - chatbot_ui
