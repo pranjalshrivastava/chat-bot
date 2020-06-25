@@ -15,7 +15,6 @@ import datetime
 import requests
 import json
 import csv
-import pandas as pd
 
 INTENT_DESCRIPTION_MAPPING_PATH = "intent_description_mapping.csv"
 ACTION_DEFAULT_ASK_REPHRASE_NAME = 'action_default_ask_rephrase'
@@ -26,7 +25,7 @@ class GetPanasScore(Action):
         return "action_get_panas_score"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        PATH = "http://34.75.197.185/panas-score"
+        PATH = "/chatbot_ui/panas-score"
         data = requests.get(url=PATH).json()
         if data:
             score = data["score"]
