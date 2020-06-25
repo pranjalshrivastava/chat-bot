@@ -26,7 +26,7 @@ class GetPanasScore(Action):
         return "action_get_panas_score"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        PATH = "http://35.237.71.46/panas-score"
+        PATH = "http://34.75.197.185/panas-score"
         data = requests.get(url=PATH).json()
         if data:
             score = data["score"]
