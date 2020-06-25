@@ -4,9 +4,14 @@ FROM rasa/rasa-sdk:latest
  # back to the `root` user if you want to install additional dependencies
 USER root
 
+WORKDIR /app/actions
+COPY . /app/actions
+
 RUN pip3 install recognizers-text-suite && \
 pip3 install requests && \
 pip3 install pandas
+
+VOLUME /app/actions
 
 # Switch back to a non-root user
 USER 1001
