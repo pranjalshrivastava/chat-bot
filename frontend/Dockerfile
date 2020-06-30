@@ -7,9 +7,10 @@ RUN apt-get update && apt-get -y install curl gnupg && curl -sL https://deb.node
 WORKDIR /app/frontend
 COPY . /app/frontend
 
-RUN npm install && \
-apt-get update && apt-get install -y postgresql && \
-wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy && chmod +x cloud_sql_proxy
+RUN npm install
+RUN apt-get update && apt-get install -y postgresql
+RUN yum -y install wget
+RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy && chmod +x cloud_sql_proxy
 
 VOLUME /app/frontend
 
