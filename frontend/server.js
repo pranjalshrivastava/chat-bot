@@ -23,6 +23,18 @@ app.get('/panas', function(req, res) {
     res.sendFile(__dirname + '/panas.html');
 });
 
+const { Client } = require('pg');
+const connectionString = process.env.DATABASE_URL;
+const client = new Client({
+    connectionString: connectionString,
+});
+client.connect();
+client.query('SELECT * FROM clients;', (err, res) => {
+    console.log(err, res)
+    client.end()
+});
+
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -38,14 +50,3 @@ app.post('/ajax_check', function(req, res) {
 app.get('/panas-score', function(req, res) {
     res.end(JSON.stringify(global.panasscore));
 })
-
-const { Client } = require('pg');
-const connectionString = process.env.DATABASE_URL;
-const client = new Client({
-    connectionString: connectionString,
-});
-client.connect();
-client.query('SELECT * FROM clients;', (err, res) => {
-    console.log(err, res)
-    client.end()
-});
