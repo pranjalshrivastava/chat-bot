@@ -9,7 +9,6 @@ COPY . /app/frontend
 
 RUN npm install
 RUN apt-get update && apt-get install -y postgresql
-RUN yum -y install wget
 RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy && chmod +x cloud_sql_proxy
 
 VOLUME /app/frontend
