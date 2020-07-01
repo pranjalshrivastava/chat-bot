@@ -34,12 +34,11 @@ app.get('/chatbot', (req, res) => {
 app.post('/panas', function(req, res) {
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
-    uid = req.body.uid;
+    global.uid = req.body.uid;
     client.connect();
     const queryText = 'INSERT INTO users(uid, first_name, last_name) VALUES($1, $2, $3)'
     client.query(queryText, [uid, firstName, lastName], (err, res) => {
         console.log(err, res)
-        client.end()
     });
 });
 
@@ -49,9 +48,8 @@ app.get('/panas', function(req, res) {
 
 app.post('/panas-score', function(req, res) {
     var panasScore = req.body.score;
-    client.connect();
     const queryText = 'UPDATE users SET panas_score=$1 WHERE uid=$2'
-    client.query(queryText, [panasScore, uid], (err, res) => {
+    client.query(queryText, [panasScore, global.uid], (err, res) => {
         console.log(err, res)
         client.end()
     });
