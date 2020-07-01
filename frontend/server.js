@@ -34,13 +34,10 @@ app.get('/chatbot', (req, res) => {
 app.post('/panas', function(req, res) {
     var firstName = req.body.firstName;
     var lastName = req.body.lastName;
-    var uid = req.body.uid;
-    console.log(firstName);
-    console.log(lastName);
-    console.log(uid);
+    uid = req.body.uid;
     client.connect();
-    const queryText = 'INSERT INTO clients(client_name, industry, location) VALUES($1, $2, $3)'
-    client.query(queryText, [firstName, lastName, uid], (err, res) => {
+    const queryText = 'INSERT INTO users(uid, first_name, last_name) VALUES($1, $2, $3)'
+    client.query(queryText, [uid, firstName, lastName], (err, res) => {
         console.log(err, res)
         client.end()
     });
@@ -51,10 +48,19 @@ app.get('/panas', function(req, res) {
 });
 
 app.post('/panas-score', function(req, res) {
-    global.panasscore = req.body;
-    console.log(global.panasscore);
+    var panasScore = req.body.score;
+    client.connect();
+    const queryText = 'UPDATE users SET panas_score=$1 WHERE uid=$2'
+    client.query(queryText, [panasScore, uid], (err, res) => {
+        console.log(err, res)
+        client.end()
+    });
 })
 
-app.get('/panas-score', function(req, res) {
-    res.end(JSON.stringify(global.panasscore));
-})
+// app.post('/panas-score', function(req, res) {
+//     global.panasscore = req.body;
+// })
+
+// app.get('/panas-score', function(req, res) {
+//     res.end(JSON.stringify(global.panasscore));
+// })
