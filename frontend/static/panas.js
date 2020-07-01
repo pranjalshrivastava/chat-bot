@@ -1,7 +1,7 @@
-$(document).ready(function () {
-    
+$(document).ready(function() {
+
     //$("#bgStorySetupModal").modal()
-    $("#panas_result").click(function () {
+    $("#panas_result").click(function() {
         var val_1 = $("input[name='Interested']:checked").val()
         var val_2 = $("input[name='Distressed']:checked").val()
         var val_3 = $("input[name='Excited']:checked").val()
@@ -51,20 +51,19 @@ $(document).ready(function () {
 
         if (positive >= negative) {
             window.panas = 1;
-        }
-        else if (positive < negative) {
+        } else if (positive < negative) {
             window.panas = 0;
         }
 
         var panasscore = window.panas;
         $.ajax({
             type: 'POST',
-            url: '/ajax_check',
+            url: '/panas-score',
             data: { score: panasscore },
             dataType: 'json',
         });
 
         window.location.replace(window.location.href.replace("panas", 'chatbot'))
     });
-    
+
 });
