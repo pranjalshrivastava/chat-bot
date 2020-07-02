@@ -47,8 +47,8 @@ class GetPanasScore(Action):
         #     return [SlotSet("panas_score", score)]
         # else:
         #     return [SlotSet("panas_score", "no score")]
-        dispatcher.utter_message("But your Panas score is " + record)
-        return [SlotSet("panas_score", record)]
+        dispatcher.utter_message("But your Panas score is " + str(record[0]))
+        return [SlotSet("panas_score", record[0])]
         
 
 class ActionDefaultAskAffirmation(Action):
