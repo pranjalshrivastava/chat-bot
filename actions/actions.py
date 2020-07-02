@@ -35,19 +35,20 @@ class GetPanasScore(Action):
         cursor = connection.cursor()
         cursor.execute("SELECT panas_score FROM users ORDER BY id DESC LIMIT 1;")
         record = cursor.fetchone()
-        if isinstance(record, list):
-            score = record[0]
-        else:
-            score = record
-        if (connection):
-            cursor.close()
-            connection.close()
-            print("PostgreSQL connection is closed \n")
-        if score == 0:
-            dispatcher.utter_message("But your Panas score is negative!")
-            return [SlotSet("panas_score", score)]
-        else:
-            return [SlotSet("panas_score", "no score")]
+        # if isinstance(record, list):
+        #     score = record[0]
+        # else:
+        #     score = record
+        # if (connection):
+        #     cursor.close()
+        #     connection.close()
+        # if score == 0:
+        #     dispatcher.utter_message("But your Panas score is negative!")
+        #     return [SlotSet("panas_score", score)]
+        # else:
+        #     return [SlotSet("panas_score", "no score")]
+        dispatcher.utter_message("But your Panas score is " + record)
+        return [SlotSet("panas_score", record)]
         
 
 class ActionDefaultAskAffirmation(Action):
