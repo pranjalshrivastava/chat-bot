@@ -18,9 +18,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 const fs = require('fs');
 
 const { Client } = require('pg');
-const connectionString = process.env.DATABASE_URL;
 const client = new Client({
-    connectionString: connectionString,
+    user: 'postgres',
+    host: 'cloudsql-proxy',
+    database: 'chatbot_db',
+    password: process.env.DB_PWD,
+    port: 5432,
 });
 
 app.get('/', function(req, res) {

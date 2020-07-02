@@ -8,7 +8,8 @@ USER root
 
 RUN pip3 install recognizers-text-suite && \
 pip3 install requests && \
-pip3 install pandas
+pip3 install pandas && \
+pip3 install psycopg2
 
 COPY . /app
 

@@ -21,7 +21,7 @@ services:
         - action_server
         - cloudsql-proxy
       environment:
-        DATABASE_URL: $DB_URL
+        DB_PWD: $DB_PWD
     chatbot_ui:
       container_name: "chatbot_ui"
       build: 
@@ -31,7 +31,7 @@ services:
       depends_on:
         - cloudsql-proxy
       environment:
-        DATABASE_URL: $DB_URL
+        DB_PWD: $DB_PWD
     rasa:
       container_name: "rasa_server"
       build: 
@@ -41,7 +41,7 @@ services:
       depends_on:
         - cloudsql-proxy
       environment:
-        DATABASE_URL: $DB_URL
+        DB_PWD: $DB_PWD
     action_server:
       container_name: "action_server"
       image: rasa/rasa-sdk:latest
@@ -54,6 +54,6 @@ services:
         - chatbot_ui
         - cloudsql-proxy
       environment:
-        DATABASE_URL: $DB_URL
+        DB_PWD: $DB_PWD
       ports:
         - "5055:5055"

@@ -16,9 +16,20 @@ import requests
 import json
 import csv
 import pandas as pd
+import psycopg2
+import os
 
 INTENT_DESCRIPTION_MAPPING_PATH = "intent_description_mapping.csv"
 ACTION_DEFAULT_ASK_REPHRASE_NAME = 'action_default_ask_rephrase'
+
+DB_PWD = os.environ.get("DB_PWD")
+connection = psycopg2.connect(user = "postgres", password = DB_PWD, host = "cloudsql-proxy", port = "5432", database = "chatbot_db")
+cursor = connection.cursor()
+cursor.execute("SELECT TIMESTAMP, panas_score FROM users ORDER BY TIMESTAMP DESC LIMIT 1;")
+record = cursor.fetchone()
+score = record[1]
+cursor.close()
+connection.close()
 
 class GetPanasScore(Action):
 
@@ -26,10 +37,6 @@ class GetPanasScore(Action):
         return "action_get_panas_score"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        PATH = "http://34.75.197.185/panas-score"
-        data = requests.get(url=PATH).json()
-        if data:
-            score = data["score"]
             if score == "0":
                 dispatcher.utter_message("But your Panas score is negative!")
             return [SlotSet("panas_score", score)]
