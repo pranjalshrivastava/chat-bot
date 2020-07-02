@@ -17,6 +17,15 @@ action_endpoint:
 # By default the conversations are stored in memory.
 # https://rasa.com/docs/rasa/api/tracker-stores/
 
+tracker_store:
+  type: sql
+  dialect: "postgresql"
+  url: "cloudsql-proxy"
+  port: 5432
+  db: "chatbot_db"
+  username: "postgres"
+  password: ${DB_PWD}
+
 #tracker_store:
 #    type: redis
 #    url: <host of the redis instance, e.g. localhost>
