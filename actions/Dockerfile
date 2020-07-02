@@ -9,7 +9,8 @@ USER root
 RUN pip3 install recognizers-text-suite && \
 pip3 install requests && \
 pip3 install pandas
-RUN pip install psycopg2
+RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev && \
+pip install psycopg2
 
 COPY . /app
 
