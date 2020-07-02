@@ -43,7 +43,7 @@ class GetPanasScore(Action):
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed \n")
-        if score == "0":
+        if score == 0 || score == "0":
             dispatcher.utter_message("But your Panas score is negative!")
             return [SlotSet("panas_score", score)]
         else:
