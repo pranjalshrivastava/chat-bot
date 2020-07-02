@@ -29,7 +29,7 @@ class GetPanasScore(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         try:
-            DB_PWD = os.environ["DB_PWD"]
+            DB_PWD = os.getenv("DB_PWD")
             connection = psycopg2.connect(user = "postgres", password = DB_PWD, host = "cloudsql-proxy", port = "5432", database = "chatbot_db")
             cursor = connection.cursor()
             cursor.execute("SELECT TIMESTAMP, panas_score FROM users ORDER BY TIMESTAMP DESC LIMIT 1;")
