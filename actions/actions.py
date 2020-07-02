@@ -33,9 +33,12 @@ class GetPanasScore(Action):
         DB_PWD = os.getenv("DB_PWD")
         connection = psycopg2.connect(user = "postgres", password = DB_PWD, host = "cloudsql-proxy", port = "5432", database = "chatbot_db")
         cursor = connection.cursor()
-        cursor.execute("SELECT TIMESTAMP, panas_score FROM users ORDER BY TIMESTAMP DESC LIMIT 1;")
+        cursor.execute("SELECT panas_score FROM users ORDER BY id DESC LIMIT 1;")
         record = cursor.fetchone()
-        score = record[1]
+        if isinstance(record, list):
+            score = record[0]
+        else:
+            score = record
         if (connection):
             cursor.close()
             connection.close()
