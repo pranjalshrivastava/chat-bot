@@ -9,7 +9,8 @@ USER root
 RUN pip3 install recognizers-text-suite && \
 pip3 install requests && \
 pip3 install pandas && \
-pip install psycopg2-binary
+pip install psycopg2-binary && \
+pip install -U python-dotenv
 
 COPY . /app
 

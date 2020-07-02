@@ -18,6 +18,8 @@ import csv
 import pandas as pd
 import psycopg2
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 INTENT_DESCRIPTION_MAPPING_PATH = "intent_description_mapping.csv"
 ACTION_DEFAULT_ASK_REPHRASE_NAME = 'action_default_ask_rephrase'
@@ -28,20 +30,16 @@ class GetPanasScore(Action):
         return "action_get_panas_score"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        try:
-            DB_PWD = os.getenv("DB_PWD")
-            connection = psycopg2.connect(user = "postgres", password = DB_PWD, host = "cloudsql-proxy", port = "5432", database = "chatbot_db")
-            cursor = connection.cursor()
-            cursor.execute("SELECT TIMESTAMP, panas_score FROM users ORDER BY TIMESTAMP DESC LIMIT 1;")
-            record = cursor.fetchone()
-            score = record[1]
-        except (Exception, psycopg2.Error) as error:
-            print("Error fetching data from PostgreSQL table", error)
-        finally:
-            if (connection):
-                cursor.close()
-                connection.close()
-                print("PostgreSQL connection is closed \n")
+        DB_PWD = os.getenv("DB_PWD")
+        connection = psycopg2.connect(user = "postgres", password = DB_PWD, host = "cloudsql-proxy", port = "5432", database = "chatbot_db")
+        cursor = connection.cursor()
+        cursor.execute("SELECT TIMESTAMP, panas_score FROM users ORDER BY TIMESTAMP DESC LIMIT 1;")
+        record = cursor.fetchone()
+        score = record[1]
+        if (connection):
+            cursor.close()
+            connection.close()
+            print("PostgreSQL connection is closed \n")
         if score == "0":
             dispatcher.utter_message("But your Panas score is negative!")
             return [SlotSet("panas_score", score)]
