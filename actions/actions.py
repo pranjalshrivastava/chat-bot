@@ -24,6 +24,22 @@ load_dotenv()
 INTENT_DESCRIPTION_MAPPING_PATH = "intent_description_mapping.csv"
 ACTION_DEFAULT_ASK_REPHRASE_NAME = 'action_default_ask_rephrase'
 
+class GetName(Action):
+    
+    def name(self) -> Text:
+        return "action_get_name"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        DB_PWD = os.getenv("DB_PWD")
+        connection = psycopg2.connect(user = "postgres", password = DB_PWD, host = "cloudsql-proxy", port = "5432", database = "chatbot_db")
+        cursor = connection.cursor()
+        cursor.execute("SELECT first_name FROM users ORDER BY id DESC LIMIT 1;")
+        name = cursor.fetchone()[0]
+        if (connection):
+            cursor.close()
+            connection.close()
+        return [SlotSet("name", name)]
+
 class GetPanasScore(Action):
 
     def name(self) -> Text:
@@ -34,13 +50,12 @@ class GetPanasScore(Action):
         connection = psycopg2.connect(user = "postgres", password = DB_PWD, host = "cloudsql-proxy", port = "5432", database = "chatbot_db")
         cursor = connection.cursor()
         cursor.execute("SELECT panas_score FROM users ORDER BY id DESC LIMIT 1;")
-        record = cursor.fetchone()
-        score = record[0]
+        score = cursor.fetchone()[0]
         if (connection):
             cursor.close()
             connection.close()
         if score == 0:
-            dispatcher.utter_message("But your Panas score is negative!")
+            # dispatcher.utter_message("But your Panas score is negative!")
             return [SlotSet("panas_score", "0")]
         else:
             return [SlotSet("panas_score", "1")]
