@@ -53,7 +53,7 @@ $(document).ready(function() {
                 }
             }
         } else {
-            $("#uidValidError").show()
+            $("#uidError").show()
         }
 
 
@@ -80,6 +80,7 @@ $(document).ready(function() {
                             isUidValid = true
                         } else {
                             isUidValid = false;
+                            $("#uidValidError").show();
                             break;
                         }
                     }
@@ -105,7 +106,7 @@ $(document).ready(function() {
                 } else {
                     isUidAvailable = true
                 }
-                if (!isUidValid) {
+                if (!isUidValid && uid.length != 0) {
                     $("#uidValidError").show()
                 } else {
                     $("#uidValidError").hide()

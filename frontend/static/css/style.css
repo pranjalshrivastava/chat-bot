@@ -8,8 +8,8 @@ body {
 .widget {
     display: none;
     position: fixed;
-    bottom: 10%;
-    top: 10%;
+    bottom: 8%;
+    top: 8%;
     left: 20%;
     right: 20%;
     background: #f7f7f7;
@@ -162,16 +162,15 @@ textarea-webkit-scrollbar {
 .imgProfile {
     box-shadow: 0 0px 1px 0 rgba(0, 0, 0, 0.16), 0 0px 10px 0 rgba(0, 0, 0, 0.12);
     background: white;
-    border-radius: 50px;
-    width: 60%;
-    padding: 2%;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    padding: 5px;
 }
 
 .profile_div {
-    /* display: none; */
     position: fixed;
-    padding: 5px;
-    width: 10%;
+    padding: 15px;
     bottom: 0;
     right: 0;
     cursor: pointer;
@@ -304,7 +303,7 @@ textarea-webkit-scrollbar {
 
 .order,
 #closeContents {
-    color: #006747;
+    color: #005432;
 }
 
 .metadata_2,
@@ -407,7 +406,7 @@ div.content_data::-webkit-scrollbar {
 
 .menuChips {
     display: block;
-    background: #006747;
+    background: #005432;
     color: #fff;
     text-align: center;
     padding: 5px;
@@ -643,7 +642,7 @@ div.content_data::-webkit-scrollbar {
 }
 
 .chip:hover {
-    background-color: #006747;
+    background-color: #005432;
     color: white;
 }
 
@@ -697,7 +696,7 @@ div.content_data::-webkit-scrollbar {
 
 .collapsible-header {
     font-weight: bold;
-    color: #006747;
+    color: #005432;
 }
 
 ul.collapsible>li:first-child .collapsible-header {
@@ -705,7 +704,7 @@ ul.collapsible>li:first-child .collapsible-header {
 }
 
 ul.collapsible>li:last-child .collapsible-header {
-    color: #006747;
+    color: #005432;
     border-radius: 0px 0px 20px 20px;
 }
 
@@ -725,10 +724,10 @@ ul.collapsible>li:last-child .collapsible-body {
     margin-top: 5px;
     margin-bottom: 5px;
     background: white;
-    color: #006747;
+    color: #005432;
     box-shadow: 2px 3px 9px 0px #9a82847a;
     margin-left: 0.5em;
-    padding: 21px;
+    padding: 18px;
     border-radius: 0 20px 20px 20px;
     max-width: 60%;
     min-width: 0%;
@@ -739,7 +738,7 @@ ul.collapsible>li:last-child .collapsible-body {
 .botTyping>div {
     width: 12px;
     height: 12px;
-    background-color: #006747;
+    background-color: #005432;
     border-radius: 100%;
     display: inline-block;
     -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
@@ -787,4 +786,149 @@ input:focus {
 
 video:focus {
     outline: none;
+}
+
+@media screen and (min-width: 992px) {
+    .widget {
+        left: 18%;
+        right: 18%;
+    }
+}
+
+@media screen and (max-width: 992px) and (min-width: 768px) {
+    .widget {
+        bottom: 8%;
+        top: 8%;
+        left: 15%;
+        right: 15%;
+    }
+}
+
+@media screen and (max-width: 768px) and (min-width: 576px) {
+    .widget {
+        bottom: 6%;
+        top: 6%;
+        left: 10%;
+        right: 10%;
+    }
+    .chat_header {
+        font-size: 18px;
+    }
+    .chat_header,
+    .keypad {
+        height: 55px;
+    }
+    .botMsg,
+    .userMsg {
+        font-size: 15px;
+        padding: 12px 14px;
+    }
+    .usrInput,
+    #sendButton {
+        padding: 3.5px;
+    }
+    .usrInput {
+        font-size: 15px;
+    }
+    .botTyping {
+        padding: 16px;
+    }
+    .botTyping>div {
+        width: 11px;
+        height: 11px;
+    }
+    .imgProfile {
+        width: 110px;
+        height: 110px;
+    }
+}
+
+@media screen and (max-width: 576px) and (min-width: 380px) {
+    .widget {
+        bottom: 5%;
+        top: 5%;
+        left: 5%;
+        right: 5%;
+    }
+    .chat_header {
+        font-size: 17px;
+    }
+    .chat_header,
+    .keypad {
+        height: 55px;
+    }
+    .botMsg,
+    .userMsg {
+        font-size: 14px;
+        padding: 11px 13px;
+    }
+    .usrInput {
+        font-size: 14px;
+    }
+    .botAvatar {
+        width: 40px;
+        height: 40px;
+    }
+    .botTyping {
+        padding: 15px;
+    }
+    .botTyping>div {
+        width: 10px;
+        height: 10px;
+    }
+    .imgProfile {
+        width: 100px;
+        height: 100px;
+    }
+    .usrInput,
+    #sendButton {
+        padding: 2px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .widget {
+        bottom: 10%;
+        top: 10%;
+        left: 5%;
+        right: 5%;
+    }
+    .chat_header {
+        font-size: 16px;
+    }
+    .chat_header,
+    .keypad {
+        height: 50px;
+    }
+    .botMsg,
+    .userMsg {
+        font-size: 13px;
+        padding: 10px 12px;
+    }
+    .usrInput {
+        font-size: 13px;
+    }
+    .botAvatar {
+        width: 35px;
+        height: 35px;
+    }
+    .userAvatar {
+        width: 35px;
+        height: 35px;
+    }
+    .botTyping {
+        padding: 14px;
+    }
+    .botTyping>div {
+        width: 9px;
+        height: 9px;
+    }
+    .imgProfile {
+        width: 90px;
+        height: 90px;
+    }
+    .usrInput,
+    #sendButton {
+        padding: 0;
+    }
 }
