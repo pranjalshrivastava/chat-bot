@@ -43,14 +43,13 @@ app.get("/users/login", checkAuthenticated, (req, res) => {
 });
 
 app.get("/panas", checkNotAuthenticated, (req, res) => {
-    // console.log(req.isAuthenticated());
     res.render("panas", { user: req.user.first_name });
 });
 
 app.post("/panas-score", (req, res) => {
     var panasScore = req.body.score;
-    let queryText = 'UPDATE users SET panas_score=$1 WHERE uid=$2'
-    pool.query(queryText, [panasScore, req.user.uid], (err, res) => {
+    let queryText = `INSERT INTO scores (first_name, last_name, uid, panas_score) VALUES ($1, $2, $3, $4)`
+    pool.query(queryText, [req.user.first_name, req.user.last_name, req.user.uid, panasScore], (err, res) => {
         console.log(err, res)
     });
 });
@@ -103,7 +102,7 @@ app.post("/users/register", (req, res) => {
                 errors.push({ message: "U-number already registered, please log in" });
                 return res.render("login.ejs", { errors });
             } else {
-                let queryText = `INSERT INTO users (first_name, last_name, uid, times_logged) VALUES ($1, $2, $3, 1) RETURNING uid`
+                let queryText = `INSERT INTO users (first_name, last_name, uid, times_logged) VALUES ($1, $2, $3, 0) RETURNING uid`
                 pool.query(queryText, [firstname, lastname, uid], (err, results) => {
                     if (err) {
                         throw err;
