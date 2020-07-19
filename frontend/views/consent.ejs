@@ -74,51 +74,63 @@
             </p>
         </div>
 
-
         <div>
-            <div id="firstNameError" class="alert alert-danger alert-dismissible fade show" role="alert">
-                First Name is required
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div id="lastNameError" class="alert alert-danger alert-dismissible fade show" role="alert">
-                Last Name is required
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div id="uidError" class="alert alert-danger alert-dismissible fade show" role="alert">
-                U number is required
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div id="uidValidError" class="alert alert-danger alert-dismissible fade show" role="alert">
-                Enter a valid U number
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="radio">
-                <label id="form">
-                    <input type="radio" value="yes" name="optradio" checked>I consent, begin the study<br>
-                    <div id="formline">
-                    <input class="consentform" required name="participantFirstName" id="participantFirstName" placeholder="Enter your first name" type="text">
-                    <input class="consentform" required name="participantLastName" id="participantLastName" placeholder="Enter your last name" type="text">
-                    
-                    <span class="input-group-text">U-</span>
-                    <input class="consentform" required name="participantUid" id="participantUid" placeholder="Enter U number">
-                </div>
-                </label>
-            </div>
-            <div class="radio">
-                <label><input type="radio" value="no" name="optradio"><span>I do not consent, I do not wish to participate</span></label>
-            </div>
-            <div class="consentbutton">
-                <button type="button" id="consentNext" class="btn btn-primary">Next</button>
-            </div>
+            <ul>
+                <% if (typeof errors != 'undefined') { %>
+                    <% errors.forEach(error => { %>
+                        <li class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <%= error.message %>
+                        </li>
+
+                        <% }) %>
+                            <% } %>
+            </ul>
         </div>
+        <div id="firstNameError" class="alert alert-danger alert-dismissible fade show" role="alert">
+            First Name is required
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div id="lastNameError" class="alert alert-danger alert-dismissible fade show" role="alert">
+            Last Name is required
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div id="uidError" class="alert alert-danger alert-dismissible fade show" role="alert">
+            U number is required
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div id="uidValidError" class="alert alert-danger alert-dismissible fade show" role="alert">
+            Enter a valid U number
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="radio">
+            <label id="form">
+                    <input type="radio" value="yes" name="optradio" checked>I consent, begin the study<br>
+                    <form id="formAll" action="/users/register" method="POST">
+                            <input class="consentform" type="text" id="firstname" name="firstname" placeholder="First Name" required />
+                            <input class="consentform" type="text" id="lastname" name="lastname" placeholder="Last Name" required />
+                        <div class="consentform" id=uid-div>
+                        <span>U-</span>
+                            <input type="text" id="uid" name="uid" placeholder="Your U-number" required />
+                        </div>
+                        <div class="consentbutton">
+                            <input id="consentNext" class="btn btn-primary" type="submit" value="Register" />
+                        </div>
+                        <a href="/users/login">Already registered? Login here</a>
+                    </form>
+                </label>
+        </div>
+        <div class="radio" id="noconsent">
+            <label><input type="radio" value="no" name="optradio"><span>I do not consent, I do not wish to participate</span></label>
+        </div>
+    </div>
 
 
     </div>

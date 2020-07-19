@@ -1,0 +1,148 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    background-color: #EFEFF0;
+    margin: 0;
+    width: 100%;
+}
+
+.error-container {
+    margin: auto;
+    margin-top: 6%;
+    max-width: 500px;
+}
+
+.small-container {
+    margin: auto;
+    margin-top: 2%;
+    padding: 50px 100px 80px 100px;
+    max-width: 500px;
+    background-color: white;
+}
+
+h1 {
+    text-align: center;
+    display: block;
+    margin: 10px 0 20px 0;
+    font: 600 36px "Barlow Condensed", sans-serif;
+    color: #3f565e;
+}
+
+li {
+    display: block;
+}
+
+ul {
+    display: block;
+    padding: 0;
+}
+
+.alert {
+    margin-bottom: 5px;
+    line-height: 30px;
+    padding: 1px 15px;
+}
+
+.alert-dismissible .close {
+    margin-bottom: 0;
+    line-height: 0px;
+    padding: .75rem;
+}
+
+:focus {
+    outline: 0;
+}
+
+#uid-div {
+    display: inline-block;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    border-color: -internal-light-dark-color(rgb(118, 118, 118), rgb(195, 195, 195));
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: start;
+    background: linear-gradient(90deg, #e9ecef 30px, transparent 0px);
+    cursor: text;
+    font-size: 1rem;
+    padding: 4px 8px;
+    margin-right: 10px;
+}
+
+#uid-div:focus {
+    border-color: rgb(102, 102, 102);
+}
+
+::placeholder {
+    color: rgb(158, 158, 158)
+}
+
+#uid {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    margin-left: 10px;
+    max-width: 80%;
+}
+
+.btn {
+    background-color: #006747;
+    border-color: #006747;
+    margin: 20px 0px 15px 0px;
+    font: 600 17px "Barlow Condensed", sans-serif;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.btn:hover,
+.btn:active,
+.btn:focus {
+    background-color: #005432;
+    border-color: #005432;
+}
+
+a {
+    color: #006747;
+}
+
+a:hover {
+    color: #005432;
+}
+
+#register {
+    text-align: center;
+    margin: auto;
+}
+
+@media screen and (max-width: 500px) and (min-width: 340px) {
+    .small-container {
+        max-width: 100%;
+        padding: 50px 40px 80px 40px;
+    }
+    body {
+        background-color: white;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    body,
+    span,
+    input {
+        font-size: 90%;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    .small-container {
+        max-width: 100%;
+        padding: 50px 30px 80px 30px;
+    }
+    body {
+        background-color: white;
+    }
+}

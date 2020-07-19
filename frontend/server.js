@@ -1,67 +1,143 @@
-var express = require('express');
+const express = require("express");
+const { pool } = require("./dbConfig");
+const passport = require("passport");
+const flash = require("express-flash");
+const session = require("express-session");
+require("dotenv").config();
 const app = express();
 var path = require('path')
-const server = require('http').createServer(app);
-var cors = require('cors');
-const router = express.Router();
-const PORT = 3000;
-server.listen(PORT);
-console.log(`Server is running on port ${PORT}`);
-
-app.use(cors())
 app.use(express.static(path.join(__dirname, 'static')));
 
-const bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+const PORT = process.env.PORT || 3000;
 
-const fs = require('fs');
+const initializePassport = require("./passportConfig");
 
-const { Client } = require('pg');
-const client = new Client({
-    user: 'postgres',
-    host: 'cloudsql-proxy',
-    database: 'chatbot_db',
-    password: process.env.DB_PWD,
-    port: 5432,
+initializePassport(passport);
+
+app.use(express.urlencoded({ extended: false }));
+app.set("view engine", "ejs");
+
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: false
+    })
+);
+
+app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.get("/", (req, res) => {
+    res.render("login.ejs");
 });
 
-app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/consent.html');
+app.get("/users/register", checkAuthenticated, (req, res) => {
+    res.render("consent.ejs");
 });
 
-app.get('/chatbot', (req, res) => {
-    res.sendFile(__dirname + '/chatbot.html');
+app.get("/users/login", checkAuthenticated, (req, res) => {
+    // console.log(req.session.flash.error);
+    res.render("login.ejs");
 });
 
-app.post('/panas', function(req, res) {
-    var firstName = req.body.firstName;
-    var lastName = req.body.lastName;
-    global.uid = req.body.uid;
-    client.connect();
-    const queryText = 'INSERT INTO users(uid, first_name, last_name) VALUES($1, $2, $3)'
-    client.query(queryText, [uid, firstName, lastName], (err, res) => {
-        console.log(err, res)
-    });
+app.get("/panas", checkNotAuthenticated, (req, res) => {
+    // console.log(req.isAuthenticated());
+    res.render("panas", { user: req.user.first_name });
 });
 
-app.get('/panas', function(req, res) {
-    res.sendFile(__dirname + '/panas.html');
-});
-
-app.post('/panas-score', function(req, res) {
+app.get("/chatbot", checkNotAuthenticated, (req, res) => {
     var panasScore = req.body.score;
-    const queryText = 'UPDATE users SET panas_score=$1 WHERE uid=$2'
-    client.query(queryText, [panasScore, global.uid], (err, res) => {
+    let queryText = 'UPDATE users SET panas_score=$1 WHERE uid=$2'
+    pool.query(queryText, [panasScore, req.user.uid], (err, res) => {
         console.log(err, res)
-        client.end()
     });
-})
+    res.render('chatbot.ejs', { user: req.user.first_name });
+});
 
-// app.post('/panas-score', function(req, res) {
-//     global.panasscore = req.body;
-// })
+app.get("/users/logout", (req, res) => {
+    req.logout();
+    res.render("login.ejs", { message: "You have logged out successfully" });
+});
 
-// app.get('/panas-score', function(req, res) {
-//     res.end(JSON.stringify(global.panasscore));
-// })
+app.post("/users/register", (req, res) => {
+    var { firstname, lastname, uid } = req.body;
+
+    let errors = [];
+
+    if (!firstname || !lastname || !uid) {
+        errors.push({ message: "Please enter all fields" });
+    }
+
+    if (uid && uid.length == 8) {
+        for (var i = 0; i < uid.length; i++) {
+            if (uid.charCodeAt(i) >= 48 && uid.charCodeAt(i) <= 57) {
+                isUidValid = true
+            } else {
+                isUidValid = false;
+            }
+        }
+    } else {
+        isUidValid = false;
+    }
+
+    if (!isUidValid) {
+        errors.push({ message: "Enter a valid U-number" });
+    }
+
+    if (errors.length > 0) {
+        res.render("consent.ejs", { errors, firstname, lastname, uid });
+    } else {
+        let queryText = `SELECT * FROM users WHERE uid = $1`
+        pool.query(queryText, [uid], (err, results) => {
+            if (err) {
+                console.log(err);
+            }
+            console.log(results.rows);
+
+            if (results.rows.length > 0) {
+                errors.push({ message: "U-number already registered, please log in" });
+                return res.render("login.ejs", { errors });
+            } else {
+                let queryText = `INSERT INTO users (first_name, last_name, uid, times_logged) VALUES ($1, $2, $3, 1) RETURNING uid`
+                pool.query(queryText, [firstname, lastname, uid], (err, results) => {
+                    if (err) {
+                        throw err;
+                    }
+                    console.log(results.rows);
+                    req.flash("success_msg", "You are now registered. Please log in");
+                    res.redirect("/users/login");
+                });
+            }
+        });
+    }
+});
+
+app.post(
+    "/users/login",
+    passport.authenticate("local", {
+        successRedirect: "/panas",
+        failureRedirect: "/users/login",
+        failureFlash: true
+    })
+);
+
+function checkAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return res.redirect("/panas");
+    }
+    next();
+}
+
+function checkNotAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect("/users/login");
+}
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
