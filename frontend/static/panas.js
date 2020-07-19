@@ -90,7 +90,7 @@ $(document).ready(function() {
             var panasscore = window.panas;
             $.ajax({
                 type: 'POST',
-                url: window.location.origin + '/chatbot',
+                url: '/panas-score',
                 data: { score: panasscore },
                 dataType: 'json',
             });

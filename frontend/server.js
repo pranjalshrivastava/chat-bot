@@ -47,12 +47,15 @@ app.get("/panas", checkNotAuthenticated, (req, res) => {
     res.render("panas", { user: req.user.first_name });
 });
 
-app.get("/chatbot", checkNotAuthenticated, (req, res) => {
+app.post("/panas-score", (req, res) => {
     var panasScore = req.body.score;
     let queryText = 'UPDATE users SET panas_score=$1 WHERE uid=$2'
     pool.query(queryText, [panasScore, req.user.uid], (err, res) => {
         console.log(err, res)
     });
+});
+
+app.get("/chatbot", checkNotAuthenticated, (req, res) => {
     res.render('chatbot.ejs', { user: req.user.first_name });
 });
 
