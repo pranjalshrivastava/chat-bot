@@ -10,7 +10,7 @@ COPY package.json package*.json ./
 RUN npm install
 RUN apt-get update && apt-get install -y postgresql
 RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy && chmod +x cloud_sql_proxy
-RUN npm install ejs dotenv pg express-session express-flash passport passport-local
+RUN npm install ejs pg express-session express-flash passport passport-local
 COPY . .
 VOLUME /app
 CMD ["npm", "start"]

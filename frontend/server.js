@@ -3,7 +3,6 @@ const { pool } = require("./dbConfig");
 const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
-require("dotenv").config();
 const app = express();
 var path = require('path')
 app.use(express.static(path.join(__dirname, 'static')));
