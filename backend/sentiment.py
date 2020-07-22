@@ -6,6 +6,7 @@ from rasa.nlu.constants import INTENT
 # nltk needs to be installed
 import nltk
 from nltk.classify import NaiveBayesClassifier
+from nltk.tokenize import WhitespaceTokenizer
 import os
 
 import typing
@@ -16,28 +17,29 @@ SENTIMENT_MODEL_FILE_NAME = "sentiment_classifier.pkl"
 class SentimentAnalyzer(Component):
     """A custom sentiment analysis component"""
     name = "sentiment"
-    provides = ["entities"]
-    requires = ["tokens"]
     defaults = {}
     language_list = ["en"]
-    print('initialised the class')
+
+    @classmethod
+    def required_components(cls) -> List[Type[Component]]:
+        return ["tokens"]
 
     def __init__(self, component_config=None):
         super(SentimentAnalyzer, self).__init__(component_config)
 
-    def train(self, training_data, cfg, **kwargs):
+    def train(self, cfg, **kwargs):
         # Load the labels from the text file, retrieve training tokens for share_problems intent and after formatting data train the classifier.
 
         with open('labels.txt', 'r') as f:
             labels = f.read().splitlines()
 
-        training_data = training_data.training_examples[0:37]
-        tokens = [list(map(lambda x: x.text, t.get('tokens'))) for t in training_data]
+        with open('training_data.txt', 'r') as f:
+            training_data = f.read().splitlines()
+
+        tokens = [WhitespaceTokenizer().tokenize(t) for t in training_data]
         processed_tokens = [self.preprocessing(t) for t in tokens]
         labeled_data = [(t, x) for t,x in zip(processed_tokens, labels)]
         self.clf = NaiveBayesClassifier.train(labeled_data)
-
-
 
     def convert_to_rasa(self, value, confidence):
         """Convert model output into the Rasa NLU compatible output format."""
