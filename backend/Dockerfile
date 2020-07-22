@@ -4,6 +4,7 @@ WORKDIR /app
 COPY . /app
 COPY ./data /app/data
 
+RUN pip3 install nltk
 RUN  rasa train
 
 VOLUME /app
