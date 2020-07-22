@@ -20,10 +20,6 @@ class SentimentAnalyzer(Component):
     defaults = {}
     language_list = ["en"]
 
-    @classmethod
-    def required_components(cls) -> List[Type[Component]]:
-        return ["tokens"]
-
     def __init__(self, component_config=None):
         super(SentimentAnalyzer, self).__init__(component_config)
 
