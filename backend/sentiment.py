@@ -62,7 +62,7 @@ class SentimentAnalyzer(Component):
             # component is either not trained or didn't receive enough training data
             entity = None
         else:
-            tokens = [t.text for t in message.get("tokens")]
+            tokens = [WhitespaceTokenizer().tokenize(message)]
             tb = self.preprocessing(tokens)
             pred = self.clf.prob_classify(tb)
 
