@@ -23,7 +23,7 @@ class SentimentAnalyzer(Component):
     def __init__(self, component_config=None):
         super(SentimentAnalyzer, self).__init__(component_config)
 
-    def train(self, cfg, **kwargs):
+    def train(self, training_data, cfg, **kwargs):
         # Load the labels from the text file, retrieve training tokens for share_problems intent and after formatting data train the classifier.
 
         with open('labels.txt', 'r') as f:
