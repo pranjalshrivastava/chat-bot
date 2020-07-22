@@ -1,7 +1,7 @@
 const { Pool } = require("pg");
 
 const pool = new Pool({
-    user: 'postgres',
+    user: process.env.DB_USER,
     host: 'cloudsql-proxy',
     database: 'chatbot_db',
     password: process.env.DB_PWD,

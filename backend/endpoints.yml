@@ -23,7 +23,7 @@ tracker_store:
   url: "cloudsql-proxy"
   port: 5432
   db: "chatbot_db"
-  username: "postgres"
+  username: ${DB_USER}
   password: ${DB_PWD}
 
 #tracker_store:

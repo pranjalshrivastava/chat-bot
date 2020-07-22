@@ -31,7 +31,7 @@ class GetName(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         DB_PWD = os.getenv("DB_PWD")
-        connection = psycopg2.connect(user = "postgres", password = DB_PWD, host = "cloudsql-proxy", port = "5432", database = "chatbot_db")
+        connection = psycopg2.connect(user = DB_USER, password = DB_PWD, host = "cloudsql-proxy", port = "5432", database = "chatbot_db")
         cursor = connection.cursor()
         cursor.execute("SELECT first_name FROM scores ORDER BY id DESC LIMIT 1;")
         name = cursor.fetchone()[0]
@@ -47,7 +47,7 @@ class GetPanasScore(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         DB_PWD = os.getenv("DB_PWD")
-        connection = psycopg2.connect(user = "postgres", password = DB_PWD, host = "cloudsql-proxy", port = "5432", database = "chatbot_db")
+        connection = psycopg2.connect(user = DB_USER, password = DB_PWD, host = "cloudsql-proxy", port = "5432", database = "chatbot_db")
         cursor = connection.cursor()
         cursor.execute("SELECT panas_score FROM scores ORDER BY id DESC LIMIT 1;")
         score = cursor.fetchone()[0]

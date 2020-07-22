@@ -22,6 +22,7 @@ services:
         - cloudsql-proxy
       environment:
         DB_PWD: $DB_PWD
+        DB_USER: $DB_USER
         SESSION_SECRET: $SESSION_SECRET
     chatbot_ui:
       container_name: "chatbot_ui"
@@ -33,6 +34,7 @@ services:
         - cloudsql-proxy
       environment:
         DB_PWD: $DB_PWD
+        DB_USER: $DB_USER
         SESSION_SECRET: $SESSION_SECRET
     rasa:
       container_name: "rasa_server"
@@ -44,6 +46,7 @@ services:
         - cloudsql-proxy
       environment:
         DB_PWD: $DB_PWD
+        DB_USER: $DB_USER
         SESSION_SECRET: $SESSION_SECRET
     action_server:
       container_name: "action_server"
@@ -58,6 +61,7 @@ services:
         - cloudsql-proxy
       environment:
         DB_PWD: $DB_PWD
+        DB_USER: $DB_USER
         SESSION_SECRET: $SESSION_SECRET
       ports:
         - "5055:5055"
