@@ -5,7 +5,7 @@ COPY . /app
 COPY ./data /app/data
 
 USER root
-RUN pip3 install --user U nltk
+RUN pip3 install nltk
 RUN rasa train
 
 VOLUME /app
