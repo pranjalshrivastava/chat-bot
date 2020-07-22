@@ -32,7 +32,12 @@ class SentimentAnalyzer(Component):
             labels = f.read().splitlines()
 
         training_data = training_data.training_examples
-        tokens = [list(map(lambda x: x.text, t.get('tokens'))) for t in training_data if t.get(INTENT)=="share_problems"]
+        # tokens = [list(map(lambda x: x.text, t.get('tokens'))) for t in training_data if t.get(INTENT)=="share_problems"]
+        tokens = []
+        for t in training_data:
+            if t.get(INTENT)=="share_problems":
+                tokens.append(t.get('tokens').text)
+
         processed_tokens = [self.preprocessing(t) for t in tokens]
         labeled_data = [(t, x) for t,x in zip(processed_tokens, labels)]
         self.clf = NaiveBayesClassifier.train(labeled_data)

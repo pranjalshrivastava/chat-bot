@@ -21,6 +21,7 @@ entities:
 - emotion_intensity
 - emotion_bother
 - emotion_impact
+- sentiment
 slots:
   emotion_bother:
     type: unfeaturized
