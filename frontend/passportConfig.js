@@ -20,7 +20,7 @@ function initialize(passport) {
                 return done(null, user);
             } else {
                 return done(null, false, {
-                    message: "No user with that U-ID"
+                    message: "No user with that U-number. Please register."
                 });
             }
         });

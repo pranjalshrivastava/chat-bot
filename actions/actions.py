@@ -11,6 +11,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import UserUtteranceReverted, SlotSet, EventType, ConversationPaused
+from rasa_sdk.forms import FormAction
 import datetime
 import requests
 import json
@@ -22,7 +23,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 INTENT_DESCRIPTION_MAPPING_PATH = "intent_description_mapping.csv"
-ACTION_DEFAULT_ASK_REPHRASE_NAME = 'action_default_ask_rephrase'
+DB_USER = os.getenv("DB_USER")
+DB_PWD = os.getenv("DB_PWD")
 
 class GetName(Action):
     
@@ -30,7 +32,6 @@ class GetName(Action):
         return "action_get_name"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        DB_PWD = os.getenv("DB_PWD")
         connection = psycopg2.connect(user = DB_USER, password = DB_PWD, host = "cloudsql-proxy", port = "5432", database = "chatbot_db")
         cursor = connection.cursor()
         cursor.execute("SELECT first_name FROM scores ORDER BY id DESC LIMIT 1;")
@@ -46,7 +47,6 @@ class GetPanasScore(Action):
         return "action_get_panas_score"
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        DB_PWD = os.getenv("DB_PWD")
         connection = psycopg2.connect(user = DB_USER, password = DB_PWD, host = "cloudsql-proxy", port = "5432", database = "chatbot_db")
         cursor = connection.cursor()
         cursor.execute("SELECT panas_score FROM scores ORDER BY id DESC LIMIT 1;")
@@ -144,35 +144,14 @@ class ActionDefaultAskAffirmation(Action):
 
 
 
-class ActionDefaultFallback(Action):
+class ActionSkipToActivity(Action):
     def name(self) -> Text:
-        return "action_default_fallback"
+        return "action_skip_to_activity"
 
-    def run(
-        self,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
-    ) -> List[EventType]:
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        dispatcher.utter_message(template="utter_skip_to_activity_fb")
 
-        dispatcher.utter_message(template="utter_ask_rephrase")
         return [UserUtteranceReverted()]
-
-
-
-class ActionDefaultAskRephrase(Action):
-    """Default implementation which asks the user to rephrase his intent."""
-
-    def name(self) -> Text:
-        return ACTION_DEFAULT_ASK_REPHRASE_NAME
-
-    async def run(self,
-                  dispatcher: 'Dispatcher',
-                  tracker: 'DialogueStateTracker',
-                  domain: 'Domain') -> List[EventType]:
-        dispatcher.utter_message(template="utter_ask_rephrase")
-
-        return []
 
 
 class ActionSeverityScore(Action):
@@ -197,10 +176,10 @@ class ActionSeverityScore(Action):
             return []
 
 
-class SeverityForm(FormAction):
+class SeverityFormNoButtons(FormAction):
     
     def name(self):
-        return "severity_form"
+        return "severity_form_no_buttons"
 
     @staticmethod
     def required_slots(tracker):
@@ -259,13 +238,41 @@ class SeverityForm(FormAction):
 
         score = emotion_intensity + emotion_bother + emotion_impact
         if score <= 3:
-            dispatcher.utter_message(text="Even though this hasn't taken a huge toll on you, I'm sure it’s still hard to be dealing with these feelings. I'm really glad you shared this with me.")
+            dispatcher.utter_message(template="utter_low_severity")
             return [SlotSet("severity_score", "1")]
         elif 4 <= score <= 6:
-            dispatcher.utter_message(text="That sounds really tough. I can see why it's got you feeling this way.")
+            dispatcher.utter_message(template="utter_moderate_severity")
             return [SlotSet("severity_score", "2")]
         elif score >= 7:
-            dispatcher.utter_message(text="It sounds like this has been really upsetting and I can see why. The way you're feeling right now is totally valid.")
+            dispatcher.utter_message(template="utter_high_severity")
+            return [SlotSet("severity_score", "3")]
+        else:
+            return []
+
+
+class SeverityFormWithButtons(FormAction):
+    
+    def name(self):
+        return "severity_form_with_buttons"
+
+    @staticmethod
+    def required_slots(tracker):
+        return ["emotion_intensity", "emotion_bother", "emotion_impact"]
+
+    def submit(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        emotion_intensity = tracker.get_slot('emotion_intensity')
+        emotion_bother = tracker.get_slot('emotion_bother')
+        emotion_impact = tracker.get_slot('emotion_impact')
+
+        score = emotion_intensity + emotion_bother + emotion_impact
+        if score <= 3:
+            dispatcher.utter_message(template="utter_low_severity")
+            return [SlotSet("severity_score", "1")]
+        elif 4 <= score <= 6:
+            dispatcher.utter_message(template="utter_moderate_severity")
+            return [SlotSet("severity_score", "2")]
+        elif score >= 7:
+            dispatcher.utter_message(template="utter_high_severity")
             return [SlotSet("severity_score", "3")]
         else:
             return []

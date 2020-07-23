@@ -30,7 +30,7 @@ function sendReminder() {
             $(BotResponse).appendTo(".chats").hide().fadeIn(1000);
             scrollToBottomOfResults();
         }
-    }, 120000)
+    }, 300000)
 }
 
 // ========================== greet user proactively ========================

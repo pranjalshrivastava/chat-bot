@@ -23,7 +23,7 @@ body {
 h1 {
     text-align: center;
     display: block;
-    margin: 10px 0 20px 0;
+    margin: 10px 0 30px 0;
     font: 600 36px "Barlow Condensed", sans-serif;
     color: #3f565e;
 }
@@ -49,50 +49,147 @@ ul {
     padding: .75rem;
 }
 
+:root {
+    --input-color: #8a8a8a;
+    --input-border: #d3d3d3;
+    --input-background: #fff;
+    --input-placeholder: #d1d1d1;
+    --input-border-focus: rgb(129, 129, 129);
+    --group-color: var(--input-color);
+    --group-border: var(--input-border);
+    --group-background: rgb(230, 230, 230);
+    --group-color-focus: #fff;
+    --group-border-focus: var(--input-border-focus);
+    --group-background-focus: rgb(184, 184, 184);
+}
+
+.form-field {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    line-height: 25px;
+    font-size: 1rem;
+    border-radius: 6px;
+    -webkit-appearance: none;
+    color: var(--input-color);
+    border: 1px solid var(--input-border);
+    background: var(--input-background);
+    -webkit-transition: border .3s ease;
+    transition: border .3s ease;
+}
+
+.form-field::-webkit-input-placeholder {
+    color: var(--input-placeholder);
+}
+
+.form-field::-moz-placeholder {
+    color: var(--input-placeholder);
+}
+
+.form-field:-ms-input-placeholder {
+    color: var(--input-placeholder);
+}
+
+.form-field::-ms-input-placeholder {
+    color: var(--input-placeholder);
+}
+
+.form-field::placeholder {
+    color: var(--input-placeholder);
+}
+
+.form-field:focus {
+    outline: none;
+    border-color: var(--input-border-focus);
+}
+
+.form-group {
+    position: relative;
+    display: -webkit-box;
+    display: flex;
+    width: 100%;
+}
+
+.form-group>span,
+.form-group .form-field {
+    white-space: nowrap;
+    display: block;
+}
+
+.form-group>span:not(:first-child):not(:last-child),
+.form-group .form-field:not(:first-child):not(:last-child) {
+    border-radius: 0;
+}
+
+.form-group>span:first-child,
+.form-group .form-field:first-child {
+    border-radius: 6px 0 0 6px;
+}
+
+.form-group>span:last-child,
+.form-group .form-field:last-child {
+    border-radius: 0 6px 6px 0;
+}
+
+.form-group>span:not(:first-child),
+.form-group .form-field:not(:first-child) {
+    margin-left: -1px;
+}
+
+.form-group .form-field {
+    position: relative;
+    z-index: 1;
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+    width: 1%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.form-group>span {
+    text-align: center;
+    padding: 8px 12px;
+    font-size: 1rem;
+    line-height: 25px;
+    color: var(--group-color);
+    background: var(--group-background);
+    border: 1px solid var(--group-border);
+    -webkit-transition: background .3s ease, border .3s ease, color .3s ease;
+    transition: background .3s ease, border .3s ease, color .3s ease;
+}
+
+.form-group:focus-within>span {
+    color: var(--group-color-focus);
+    background: var(--group-background-focus);
+    border-color: var(--group-border-focus);
+}
+
+html {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body .form-group {
+    max-width: 360px;
+}
+
 :focus {
     outline: 0;
-}
-
-#uid-div {
-    display: inline-block;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid #ced4da;
-    border-color: -internal-light-dark-color(rgb(118, 118, 118), rgb(195, 195, 195));
-    letter-spacing: normal;
-    word-spacing: normal;
-    text-transform: none;
-    text-indent: 0px;
-    text-shadow: none;
-    text-align: start;
-    background: linear-gradient(90deg, #e9ecef 30px, transparent 0px);
-    cursor: text;
-    font-size: 1rem;
-    padding: 4px 8px;
-    margin-right: 10px;
-}
-
-#uid-div:focus {
-    border-color: rgb(102, 102, 102);
-}
-
-::placeholder {
-    color: rgb(158, 158, 158)
-}
-
-#uid {
-    border: 0;
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
-    margin-left: 10px;
-    max-width: 80%;
 }
 
 .btn {
     background-color: #006747;
     border-color: #006747;
-    margin: 20px 0px 15px 0px;
+    margin: 10px 0px 15px 0px;
     font: 600 17px "Barlow Condensed", sans-serif;
     text-transform: uppercase;
     padding: 10px 20px;
@@ -117,6 +214,13 @@ a:hover {
 #register {
     text-align: center;
     margin: auto;
+}
+
+input:-internal-autofill-selected {
+    appearance: menulist-button;
+    background-color: white !important;
+    background-image: none !important;
+    color: -internal-light-dark(black, white) !important;
 }
 
 @media screen and (max-width: 500px) and (min-width: 340px) {
