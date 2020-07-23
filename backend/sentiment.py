@@ -1,7 +1,7 @@
 from rasa.nlu.components import Component
 import pickle
 from rasa.nlu.model import Metadata
-from rasa.nlu.constants import INTENT
+from rasa.nlu.constants import INTENT, TOKENS_NAMES
 
 # nltk needs to be installed
 import nltk
@@ -62,7 +62,7 @@ class SentimentAnalyzer(Component):
             # component is either not trained or didn't receive enough training data
             entity = None
         else:
-            tokens = [WhitespaceTokenizer().tokenize(message)]
+            tokens = message.get(TOKENS_NAMES[TEXT])
             tb = self.preprocessing(tokens)
             pred = self.clf.prob_classify(tb)
 
