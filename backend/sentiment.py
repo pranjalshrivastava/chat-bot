@@ -56,24 +56,24 @@ class SentimentAnalyzer(Component):
         return ({word: True for word in tokens})
 
 
-    def process(self, message, **kwargs):
-        """Retrieve the tokens of the new message, pass it to the classifier
-            and append prediction results to the message class."""
+    #def process(self, message, **kwargs):
+     #   """Retrieve the tokens of the new message, pass it to the classifier
+      #      and append prediction results to the message class."""
         
-        if not self.clf:
-            # component is either not trained or didn't receive enough training data
-            entity = None
-        else:
-            tokens = [t.text for t in message.get(TOKENS_NAMES[TEXT])]
-            tb = self.preprocessing(tokens)
-            pred = self.clf.prob_classify(tb)
-
-            sentiment = pred.max()
-            confidence = pred.prob(sentiment)
-
-            entity = self.convert_to_rasa(sentiment, confidence)
-
-            message.set("entities", [entity], add_to_output=True)
+       # if not self.clf:
+        #    # component is either not trained or didn't receive enough training data
+         #   entity = None
+        #else:
+         #   tokens = [t.text for t in message.get(TOKENS_NAMES[TEXT])]
+          #  tb = self.preprocessing(tokens)
+           # pred = self.clf.prob_classify(tb)
+#
+ #           sentiment = pred.max()
+  #          confidence = pred.prob(sentiment)
+#
+ #           entity = self.convert_to_rasa(sentiment, confidence)
+#
+ #           message.set("entities", [entity], add_to_output=True)
 
 
     def persist(self, file_name, model_dir):
