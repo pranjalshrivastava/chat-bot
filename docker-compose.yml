@@ -7,7 +7,7 @@ services:
       ports:
         - 5432:5432
       volumes:
-        - /home/saiakshitht/rasa-288821-3fcbe572f2e2.json:/secrets/cloudsql/credentials.json
+        - /home/saiakshitht/rasa-288821-eb5e01d38db9.json:/secrets/cloudsql/credentials.json
     nginx:
       container_name: "nginx"
       image: nginx
