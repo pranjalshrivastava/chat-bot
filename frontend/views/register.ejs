@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Register</title>
@@ -23,19 +24,27 @@
     </ul>
     <form action="/users/register" method="POST">
         <div>
-            <input type="text" id="firstname" name="firstname" placeholder="First Name" required />
+            <input type="text" id="name" name="name" placeholder="Preferred Name" required />
+            <i class="fa fa-info-circle">Name you would like to be addressed as</i>
         </div>
         <div>
-            <input type="text" id="lastname" name="lastname" placeholder="Last Name" required />
+            <input type="text" id="uid" name="uid" placeholder="UserName" required />
         </div>
         <div>
-            <input type="text" id="uid" name="uid" placeholder="U-number" required />
+            <input type="text" id="pwd" name="pwd" placeholder="Password" required />
         </div>
+        <div>
+            <input type="checkbox" id="terms" name="terms" value="Terms" required>Agree to terms and conditions</input><br>
+            <a href="/users/terms">View Terms and Conditions</a>	
+        </div> 
+    
+        <br>
+
         <div>
             <input type="submit" value="Register" />
         </div>
 
-        <a href="/users/login">Already registered? Login here</a>
+        <!--<a href="/users/login">Already registered? Login here</a>-->
     </form>
 </body>
 
