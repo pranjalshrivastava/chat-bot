@@ -55,7 +55,7 @@ app.post("/panas-score", (req, res) => {
 });
 
 app.get("/chatbot", checkNotAuthenticated, (req, res) => {
-    res.render('chatbot.ejs', { user: req.user.first_name });
+    res.render('chatbot.ejs', { user: req.user.name });
 });
 
 app.get("/users/logout", (req, res) => {
