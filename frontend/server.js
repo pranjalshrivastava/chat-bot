@@ -43,13 +43,13 @@ app.get("/users/login", checkAuthenticated, (req, res) => {
 });
 
 app.get("/panas", checkNotAuthenticated, (req, res) => {
-    res.render("panas", { user: req.user.first_name });
+    res.render("panas", { user: req.user.name });
 });
 
 app.post("/panas-score", (req, res) => {
     var panasScore = req.body.score;
-    let queryText = `INSERT INTO scores (first_name, last_name, uid, panas_score) VALUES ($1, $2, $3, $4)`
-    pool.query(queryText, [req.user.first_name, req.user.last_name, req.user.uid, panasScore], (err, res) => {
+    let queryText = `INSERT INTO scores (name, uid, panas_score) VALUES ($1, $2, $3)`
+    pool.query(queryText, [req.user.name, req.user.uid, panasScore], (err, res) => {
         console.log(err, res)
     });
 });
