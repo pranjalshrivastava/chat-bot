@@ -68,7 +68,7 @@ app.post("/users/register", (req, res) => {
 
     let errors = [];
 
-    if (!firstname || !lastname || !uid) {
+    if (!name || !uid || !pwd) {
         errors.push({ message: "Please enter all fields" });
     }
 
