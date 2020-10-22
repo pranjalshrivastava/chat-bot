@@ -64,7 +64,7 @@ app.get("/users/logout", (req, res) => {
 });
 
 app.post("/users/register", (req, res) => {
-    var { firstname, lastname, uid } = req.body;
+    var { name, uid, pwd } = req.body;
 
     let errors = [];
 
@@ -72,24 +72,24 @@ app.post("/users/register", (req, res) => {
         errors.push({ message: "Please enter all fields" });
     }
 
-    if (uid && uid.length == 8) {
-        for (var i = 0; i < uid.length; i++) {
-            if (uid.charCodeAt(i) >= 48 && uid.charCodeAt(i) <= 57) {
-                isUidValid = true
-            } else {
-                isUidValid = false;
-            }
-        }
-    } else {
-        isUidValid = false;
-    }
+//     if (uid && uid.length == 8) {
+//         for (var i = 0; i < uid.length; i++) {
+//             if (uid.charCodeAt(i) >= 48 && uid.charCodeAt(i) <= 57) {
+//                 isUidValid = true
+//             } else {
+//                 isUidValid = false;
+//             }
+//         }
+//     } else {
+//         isUidValid = false;
+//     }
 
-    if (!isUidValid) {
-        errors.push({ message: "Enter a valid U-number" });
-    }
+//     if (!isUidValid) {
+//         errors.push({ message: "Enter a valid U-number" });
+//     }
 
     if (errors.length > 0) {
-        res.render("consent.ejs", { errors, firstname, lastname, uid });
+        res.render("consent.ejs", { errors, name, uid, pwd });
     } else {
         let queryText = `SELECT * FROM users WHERE uid = $1`
         pool.query(queryText, [uid], (err, results) => {
@@ -99,11 +99,11 @@ app.post("/users/register", (req, res) => {
             console.log(results.rows);
 
             if (results.rows.length > 0) {
-                errors.push({ message: "U-number already registered, please log in" });
-                return res.render("login.ejs", { errors });
+                errors.push({ message: "username alredy exists, please use a different username" });
+                return res.render("consent.ejs", { errors, name, uid, pwd });
             } else {
-                let queryText = `INSERT INTO users (first_name, last_name, uid, times_logged) VALUES ($1, $2, $3, 0) RETURNING uid`
-                pool.query(queryText, [firstname, lastname, uid], (err, results) => {
+                let queryText = `INSERT INTO users (name, uid, pwd, times_logged) VALUES ($1, $2, $3, 0) RETURNING uid`
+                pool.query(queryText, [name, uid, pwd], (err, results) => {
                     if (err) {
                         throw err;
                     }
