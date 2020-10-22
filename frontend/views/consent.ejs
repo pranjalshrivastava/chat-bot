@@ -114,12 +114,10 @@
             <label id="form">
                     <input type="radio" value="yes" name="optradio" checked>I consent, begin the study<br>
                     <form id="formAll" action="/users/register" method="POST">
-                            <input class="form-field" type="text" id="firstname" name="firstname" placeholder="First name" required />
-                            <input class="form-field" type="text" id="lastname" name="lastname" placeholder="Last name" required />
-                        <div class="form-group" id=uid-div>
-                        <span>U-</span>
-                            <input class="form-field" type="text" id="uid" name="uid" placeholder="Numeric portion of U-number" required />
-                        </div>
+                            <input class="form-field" type="text" id="name" name="name" placeholder="Preferred Name" required />
+                            <input class="form-field" type="text" id="uid" name="uid" placeholder="User Name" required />
+                            <input class="form-field" type="text" id="pwd" name="pwd" placeholder="Password" required />
+
                         <div class="consentbutton">
                             <input id="consentNext" class="btn btn-primary" type="submit" value="Register" />
                         </div>
