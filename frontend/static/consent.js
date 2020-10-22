@@ -130,7 +130,7 @@ $(document).ready(function() {
                 $.ajax({
                     type: 'POST',
                     url: '/panas',
-                    data: { firstName: cap(firstName), lastName: cap(lastName), uid: uid },
+                    data: { name: cap(name), uid: uid },
                     dataType: 'json',
                 });
             } else {
