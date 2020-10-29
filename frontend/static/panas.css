@@ -230,7 +230,7 @@
 
 
         /* The Modal (background) */
-        .modal {
+        .popper {
           display: none; /* Hidden by default */
           position: fixed; /* Stay in place */
           z-index: 1; /* Sit on top */
@@ -244,7 +244,7 @@
         }
 
         /* Modal Content/Box */
-        .modal-content {
+        .popper-content {
           background-color: #fefefe;
           margin: 15% auto; /* 15% from the top and centered */
           padding: 20px;
@@ -253,15 +253,15 @@
         }
 
         /* The Close Button */
-        .close {
+        .popper {
           color: #aaa;
           float: right;
           font-size: 28px;
           font-weight: bold;
         }
 
-        .close:hover,
-        .close:focus {
+        .popper:hover,
+        .popper:focus {
           color: black;
           text-decoration: none;
           cursor: pointer;
