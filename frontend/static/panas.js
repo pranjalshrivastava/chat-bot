@@ -13,6 +13,26 @@ $(document).ready(function() {
             });
     }
     values.forEach(removeErrors);
+    
+        // model block 
+    
+        var modal = document.getElementById("myModal");
+
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+    
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          } 
+        }
 
     //$("#bgStorySetupModal").modal()
     $("#panas_result").click(function() {
@@ -78,8 +98,10 @@ $(document).ready(function() {
 
             var positive = val_1 + val_3 + val_5 + val_9 + val_10 + val_12 + val_14 + val_16 + val_17 + val_19
             var negative = val_2 + val_4 + val_6 + val_7 + val_8 + val_11 + val_13 + val_15 + val_18 + val_20
+            
+            modal.style.display = "block";
 
-            alert("positive: " + positive + "\n" + "negative: " + negative + "\n")
+            //alert("positive: " + positive + "\n" + "negative: " + negative + "\n")
 
             if (positive >= negative) {
                 window.panas = 1;
@@ -94,8 +116,14 @@ $(document).ready(function() {
                 data: { score: panasscore },
                 dataType: 'json',
             });
-
-            window.location.replace(window.location.href.replace("panas", 'chatbot'))
+            
+            setTimeout(function () {
+               window.open(window.location.href.replace("panas", 'chatbot'), '_blank');
+            }, 5000);
+                
+            //window.open(window.location.href.replace("panas", 'chatbot'), '_blank');
+                
+            //window.location.replace(window.location.href.replace("panas", 'chatbot'))
         }
     });
 
