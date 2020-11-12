@@ -106,7 +106,7 @@ $(document).ready(function() {
                 
             //window.open(window.location.href.replace("panas", 'chatbot'), '_blank');
                 
-            window.location.replace(window.location.href.replace("panas", 'chatbot'))
+            window.location.replace(window.location.href.replace("panas", 'gses'))
         }
     });
 
