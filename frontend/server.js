@@ -125,6 +125,11 @@ app.post(
     })
 );
 
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return res.redirect("/panas");
