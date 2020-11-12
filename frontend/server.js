@@ -74,6 +74,15 @@ app.post("/panas-score", (req, res) => {
     });
 });
 
+app.post("/cwb-score", (req, res) => {
+    //var panasScore = req.body.score;
+    let queryText = `INSERT INTO cwb VALUES ($1, $2, $3,$4, $5, $6,$7, $8, $9,$10,$11,$12)`
+    pool.query(queryText, [req.user.uid,req.user.name, req.body.val_1,req.body.val_2,req.body.val_3,req.body.val_4,req.body.val_5,req.body.val_6,req.body.val_7,req.body.val_8,req.body.val_9,req.body.val_10], (err, res) => {
+        console.log(err, res)
+    });
+});
+
+
 app.get("/chatbot", checkNotAuthenticated, (req, res) => {
     res.render('chatbot.ejs', { user: req.user.name });
 });
