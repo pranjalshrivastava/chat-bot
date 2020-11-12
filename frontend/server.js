@@ -46,6 +46,26 @@ app.get("/panas", checkNotAuthenticated, (req, res) => {
     res.render("panas", { user: req.user.name });
 });
 
+app.get("/cwb", checkNotAuthenticated, (req, res) => {
+    res.render("cwb", { user: req.user.name });
+});
+
+app.get("/ces", checkNotAuthenticated, (req, res) => {
+    res.render("ces", { user: req.user.name });
+});
+
+app.get("/pss", checkNotAuthenticated, (req, res) => {
+    res.render("pss", { user: req.user.name });
+});
+
+app.get("/msq", checkNotAuthenticated, (req, res) => {
+    res.render("msq", { user: req.user.name });
+});
+
+app.get("/gses", checkNotAuthenticated, (req, res) => {
+    res.render("gses", { user: req.user.name });
+});
+
 app.post("/panas-score", (req, res) => {
     var panasScore = req.body.score;
     let queryText = `INSERT INTO scores (name, uid, panas_score) VALUES ($1, $2, $3)`
