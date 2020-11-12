@@ -82,6 +82,37 @@ app.post("/cwb-score", (req, res) => {
     });
 });
 
+app.post("/gses-score", (req, res) => {
+    //var panasScore = req.body.score;
+    let queryText = `INSERT INTO gses VALUES ($1, $2, $3,$4, $5, $6,$7, $8, $9,$10,$11,$12)`
+    pool.query(queryText, [req.user.uid,req.user.name, req.body.val_1,req.body.val_2,req.body.val_3,req.body.val_4,req.body.val_5,req.body.val_6,req.body.val_7,req.body.val_8,req.body.val_9,req.body.val_10], (err, res) => {
+        console.log(err, res)
+    });
+});
+
+app.post("/pss-score", (req, res) => {
+    //var panasScore = req.body.score;
+    let queryText = `INSERT INTO pss VALUES ($1, $2, $3,$4, $5, $6,$7, $8, $9,$10,$11,$12)`
+    pool.query(queryText, [req.user.uid,req.user.name, req.body.val_1,req.body.val_2,req.body.val_3,req.body.val_4,req.body.val_5,req.body.val_6,req.body.val_7,req.body.val_8,req.body.val_9,req.body.val_10], (err, res) => {
+        console.log(err, res)
+    });
+});
+
+app.post("/ces-score", (req, res) => {
+    //var panasScore = req.body.score;
+    let queryText = `INSERT INTO ces VALUES ($1, $2, $3,$4, $5, $6,$7, $8, $9,$10,$11,$12,$13,$14, $15, $16,$17, $18, $19,$20,$21,$22)`
+    pool.query(queryText, [req.user.uid,req.user.name, req.body.val_1,req.body.val_2,req.body.val_3,req.body.val_4,req.body.val_5,req.body.val_6,req.body.val_7,req.body.val_8,req.body.val_9,req.body.val_10,req.body.val_11,req.body.val_12,req.body.val_13,req.body.val_14,req.body.val_15,req.body.val_16,req.body.val_17,req.body.val_18,req.body.val_19,req.body.val_20], (err, res) => {
+        console.log(err, res)
+    });
+});
+
+app.post("/msq-score", (req, res) => {
+    //var panasScore = req.body.score;
+    let queryText = `INSERT INTO msq VALUES ($1, $2, $3,$4, $5, $6,$7, $8, $9,$10,$11,$12,$13,$14, $15, $16,$17, $18, $19,$20,$21,$22)`
+    pool.query(queryText, [req.user.uid,req.user.name, req.body.val_1,req.body.val_2,req.body.val_3,req.body.val_4,req.body.val_5,req.body.val_6,req.body.val_7,req.body.val_8,req.body.val_9,req.body.val_10,req.body.val_11,req.body.val_12,req.body.val_13,req.body.val_14,req.body.val_15,req.body.val_16,req.body.val_17,req.body.val_18,req.body.val_19,req.body.val_20], (err, res) => {
+        console.log(err, res)
+    });
+});
 
 app.get("/chatbot", checkNotAuthenticated, (req, res) => {
     res.render('chatbot.ejs', { user: req.user.name });
