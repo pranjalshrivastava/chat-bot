@@ -99,8 +99,8 @@ $(document).ready(function() {
             var positive = val_1 + val_3 + val_5 + val_9 + val_10 + val_12 + val_14 + val_16 + val_17 + val_19
             var negative = val_2 + val_4 + val_6 + val_7 + val_8 + val_11 + val_13 + val_15 + val_18 + val_20
             
-            document.getElementById("popper-text").innerHTML="positive: " + positive + "\n" + "negative: " + negative + "\n";
-            modal.style.display = "block";
+            //document.getElementById("popper-text").innerHTML="positive: " + positive + "\n" + "negative: " + negative + "\n";
+            //modal.style.display = "block";
 
             //alert("positive: " + positive + "\n" + "negative: " + negative + "\n")
 
