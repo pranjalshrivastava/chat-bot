@@ -86,40 +86,33 @@
                             <% } %>
             </ul>
         </div>
-        <div id="firstNameError" class="alert alert-danger alert-dismissible fade show" role="alert">
-            First Name is required
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div id="lastNameError" class="alert alert-danger alert-dismissible fade show" role="alert">
-            Last Name is required
+        <div id="nameError" class="alert alert-danger alert-dismissible fade show" role="alert">
+            Preferred Name is required
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div id="uidError" class="alert alert-danger alert-dismissible fade show" role="alert">
-            U number is required
+            User Name is required
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div id="uidValidError" class="alert alert-danger alert-dismissible fade show" role="alert">
-            Enter a valid U number
+        <div id="pwdError" class="alert alert-danger alert-dismissible fade show" role="alert">
+            Password is required
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
+        
         <div class="radio">
             <label id="form">
                     <input type="radio" value="yes" name="optradio" checked>I consent, begin the study<br>
                     <form id="formAll" action="/users/register" method="POST">
-                            <input class="form-field" type="text" id="firstname" name="firstname" placeholder="First name" required />
-                            <input class="form-field" type="text" id="lastname" name="lastname" placeholder="Last name" required />
-                        <div class="form-group" id=uid-div>
-                        <span>U-</span>
-                            <input class="form-field" type="text" id="uid" name="uid" placeholder="Numeric portion of U-number" required />
-                        </div>
+                            <input class="form-field" type="text" id="name" name="name" placeholder="Preferred Name" required />
+                            <input class="form-field" type="text" id="uid" name="uid" placeholder="User Name" required />
+                            <input class="form-field" type="password" id="pwd" name="pwd" placeholder="Password" required />
+
                         <div class="consentbutton">
                             <input id="consentNext" class="btn btn-primary" type="submit" value="Register" />
                         </div>

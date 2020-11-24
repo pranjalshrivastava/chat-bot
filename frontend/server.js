@@ -43,19 +43,79 @@ app.get("/users/login", checkAuthenticated, (req, res) => {
 });
 
 app.get("/panas", checkNotAuthenticated, (req, res) => {
-    res.render("panas", { user: req.user.first_name });
+    res.render("panas", { user: req.user.name });
+});
+
+app.get("/cwb", checkNotAuthenticated, (req, res) => {
+    res.render("cwb", { user: req.user.name });
+});
+
+app.get("/ces", checkNotAuthenticated, (req, res) => {
+    res.render("ces", { user: req.user.name });
+});
+
+app.get("/pss", checkNotAuthenticated, (req, res) => {
+    res.render("pss", { user: req.user.name });
+});
+
+app.get("/msq", checkNotAuthenticated, (req, res) => {
+    res.render("msq", { user: req.user.name });
+});
+
+app.get("/gses", checkNotAuthenticated, (req, res) => {
+    res.render("gses", { user: req.user.name });
 });
 
 app.post("/panas-score", (req, res) => {
     var panasScore = req.body.score;
-    let queryText = `INSERT INTO scores (first_name, last_name, uid, panas_score) VALUES ($1, $2, $3, $4)`
-    pool.query(queryText, [req.user.first_name, req.user.last_name, req.user.uid, panasScore], (err, res) => {
+    let queryText = `INSERT INTO scores (name, uid, panas_score) VALUES ($1, $2, $3)`
+    pool.query(queryText, [req.user.name, req.user.uid, panasScore], (err, res) => {
+        console.log(err, res)
+    });
+});
+
+app.post("/cwb-score", (req, res) => {
+    //var panasScore = req.body.score;
+    let queryText = `INSERT INTO cwb VALUES ($1, $2, $3,$4, $5, $6,$7, $8, $9,$10,$11,$12)`
+    pool.query(queryText, [req.user.uid,req.user.name, req.body.val_1,req.body.val_2,req.body.val_3,req.body.val_4,req.body.val_5,req.body.val_6,req.body.val_7,req.body.val_8,req.body.val_9,req.body.val_10], (err, res) => {
+        console.log(err, res)
+    });
+});
+
+app.post("/gses-score", (req, res) => {
+    //var panasScore = req.body.score;
+    let queryText = `INSERT INTO gses VALUES ($1, $2, $3,$4, $5, $6,$7, $8, $9,$10,$11,$12)`
+    pool.query(queryText, [req.user.uid,req.user.name, req.body.val_1,req.body.val_2,req.body.val_3,req.body.val_4,req.body.val_5,req.body.val_6,req.body.val_7,req.body.val_8,req.body.val_9,req.body.val_10], (err, res) => {
+        console.log(err, res)
+    });
+});
+
+app.post("/pss-score", (req, res) => {
+    //var panasScore = req.body.score;
+    let queryText = `INSERT INTO pss VALUES ($1, $2, $3,$4, $5, $6,$7, $8, $9,$10,$11,$12)`
+    pool.query(queryText, [req.user.uid,req.user.name, req.body.val_1,req.body.val_2,req.body.val_3,req.body.val_4,req.body.val_5,req.body.val_6,req.body.val_7,req.body.val_8,req.body.val_9,req.body.val_10], (err, res) => {
+        console.log(err, res)
+    });
+});
+
+app.post("/ces-score", (req, res) => {
+    //var panasScore = req.body.score;
+    let queryText = `INSERT INTO ces VALUES ($1, $2, $3,$4, $5, $6,$7, $8, $9,$10,$11,$12,$13,$14, $15, $16,$17, $18, $19,$20,$21,$22)`
+    pool.query(queryText, [req.user.uid,req.user.name, req.body.val_1,req.body.val_2,req.body.val_3,req.body.val_4,req.body.val_5,req.body.val_6,req.body.val_7,req.body.val_8,req.body.val_9,req.body.val_10,req.body.val_11,req.body.val_12,req.body.val_13,req.body.val_14,req.body.val_15,req.body.val_16,req.body.val_17,req.body.val_18,req.body.val_19,req.body.val_20], (err, res) => {
+        console.log(err, res)
+    });
+});
+
+app.post("/msq-score", (req, res) => {
+    //var panasScore = req.body.score;
+    let queryText = `INSERT INTO msq VALUES ($1, $2, $3,$4, $5, $6,$7, $8, $9,$10,$11,$12,$13,$14, $15, $16,$17, $18, $19,$20,$21,$22)`
+    pool.query(queryText, [req.user.uid,req.user.name, req.body.val_1,req.body.val_2,req.body.val_3,req.body.val_4,req.body.val_5,req.body.val_6,req.body.val_7,req.body.val_8,req.body.val_9,req.body.val_10,req.body.val_11,req.body.val_12,req.body.val_13,req.body.val_14,req.body.val_15,req.body.val_16,req.body.val_17,req.body.val_18,req.body.val_19,req.body.val_20], (err, res) => {
         console.log(err, res)
     });
 });
 
 app.get("/chatbot", checkNotAuthenticated, (req, res) => {
-    res.render('chatbot.ejs', { user: req.user.first_name });
+    res.render('chatbot.ejs', { user: req.user.name });
 });
 
 app.get("/users/logout", (req, res) => {
@@ -64,32 +124,32 @@ app.get("/users/logout", (req, res) => {
 });
 
 app.post("/users/register", (req, res) => {
-    var { firstname, lastname, uid } = req.body;
+    var { name, uid, pwd } = req.body;
 
     let errors = [];
 
-    if (!firstname || !lastname || !uid) {
+    if (!name || !uid || !pwd) {
         errors.push({ message: "Please enter all fields" });
     }
 
-    if (uid && uid.length == 8) {
-        for (var i = 0; i < uid.length; i++) {
-            if (uid.charCodeAt(i) >= 48 && uid.charCodeAt(i) <= 57) {
-                isUidValid = true
-            } else {
-                isUidValid = false;
-            }
-        }
-    } else {
-        isUidValid = false;
-    }
+//     if (uid && uid.length == 8) {
+//         for (var i = 0; i < uid.length; i++) {
+//             if (uid.charCodeAt(i) >= 48 && uid.charCodeAt(i) <= 57) {
+//                 isUidValid = true
+//             } else {
+//                 isUidValid = false;
+//             }
+//         }
+//     } else {
+//         isUidValid = false;
+//     }
 
-    if (!isUidValid) {
-        errors.push({ message: "Enter a valid U-number" });
-    }
+//     if (!isUidValid) {
+//         errors.push({ message: "Enter a valid U-number" });
+//     }
 
     if (errors.length > 0) {
-        res.render("consent.ejs", { errors, firstname, lastname, uid });
+        res.render("consent.ejs", { errors, name, uid, pwd });
     } else {
         let queryText = `SELECT * FROM users WHERE uid = $1`
         pool.query(queryText, [uid], (err, results) => {
@@ -99,11 +159,11 @@ app.post("/users/register", (req, res) => {
             console.log(results.rows);
 
             if (results.rows.length > 0) {
-                errors.push({ message: "U-number already registered, please log in" });
-                return res.render("login.ejs", { errors });
+                errors.push({ message: "username alredy exists, please use a different username" });
+                return res.render("consent.ejs", { errors, name, uid, pwd });
             } else {
-                let queryText = `INSERT INTO users (first_name, last_name, uid, times_logged) VALUES ($1, $2, $3, 0) RETURNING uid`
-                pool.query(queryText, [firstname, lastname, uid], (err, results) => {
+                let queryText = `INSERT INTO users (name, uid, pwd, times_logged) VALUES ($1, $2, $3, 0) RETURNING uid`
+                pool.query(queryText, [name, uid, pwd], (err, results) => {
                     if (err) {
                         throw err;
                     }
@@ -124,6 +184,11 @@ app.post(
         failureFlash: true
     })
 );
+
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
 
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
