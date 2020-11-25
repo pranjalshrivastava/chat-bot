@@ -1,63 +1,7 @@
 ## first time greet
 * greet
-  - slot{"hello_flag":"0"}
-  - action_set_helloflag
-  - utter_ask_feeling
+  - utter_ask_how_doing
 > check_asked_mood
-
-## regreet greet
-* greet
-  - slot{"hello_flag":"1"}
-  - utter_helloagain
-> check_asked_mood
-
-## first time greetfail1
-* out_of_scope
- - action_get_scope_counter
- - utter_hmm 
- - action_sleep
- - utter_ask_feeling
-> check_asked_mood
-
-## first time greetfail2
-* out_of_scope
- - action_get_scope_counter
- - utter_hmm 
- - action_sleep
- - utter_ask_feeling
-* out_of_scope
- - action_get_scope_counter
- - utter_hmm 
- - action_sleep
- - utter_ask_feeling
-> check_asked_mood
-
-## first time greetfail3
-* out_of_scope
- - action_get_scope_counter
- - utter_hmm 
- - action_sleep
- - utter_ask_feeling
-* out_of_scope
- - action_get_scope_counter
- - slot{"scope_counter":3.0}
- - utter_goodbye
-
-
-## greet and question
-* greet_with_question
-  - utter_iamgood
-  - action_sleep
-  - utter_ask_feeling
-> check_asked_mood
-
-## regreet after moodcheck
-> check_asked_mood
-* greet
-  - slot{"hello_flag":"1"}
-  - utter_helloagain
-> check_asked_mood
- 
 
 ## good mood positive panas affirmed chat
 > check_asked_mood
@@ -258,8 +202,3 @@
 ## insult
 * insult
   - utter_respond_insult
-
-<!-- ## fallback story
-* out_of_scope
-  - action_default_ask_rephrase -->
-
