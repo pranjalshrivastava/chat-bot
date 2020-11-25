@@ -87,7 +87,7 @@ $(document).ready(function() {
                 
             //window.open(window.location.href.replace("panas", 'chatbot'), '_blank');
                 
-            window.location.replace(window.location.href.replace("postgses", 'post-pss'))
+            window.location.replace(window.location.href.replace("postgses", 'postpss'))
         }
     });
 
