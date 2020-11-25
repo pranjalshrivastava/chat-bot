@@ -109,7 +109,7 @@ $(document).ready(function() {
                 
             //window.open(window.location.href.replace("panas", 'chatbot'), '_blank');
                 
-            window.location.replace(window.location.href.replace("postmsq", 'end'))
+            window.location.replace(window.location.href.replace("postmsq", 'users/logout'))
         }
     });
 
