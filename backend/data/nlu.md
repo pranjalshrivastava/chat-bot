@@ -9,13 +9,6 @@
 - good afternoon
 - salute
 
-## intent:greet_with_question
-- Hello How are you
-- Hi How are you
-- Hie How are you doing 
-- Hey How you doing 
-- Hello There How are you doing 
-
 ## intent:introduction
 - my name is [Alex](name)
 - my name's [mary](name)
