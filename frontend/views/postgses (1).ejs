@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/panas.css" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700|Barlow+Condensed:400,600" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <div id="info">
+            <button id="taskInfo" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#bgStorySetupModal">Task Information</button>
+            <a href="/users/logout" class="btn btn-info btn-sm" id="panas_logout">Logout</a>
+        </div>
+        <p>Hello
+            <%= user %>! Read each item and then mark the appropriate answer in the space next to that question.</p>
+        <table id="panas_table">
+            <thead>
+                <th class="main"></th>
+                <th>Not at all true</th>
+                <th>Hardly true</th>
+                <th>Moderately true</th>
+                <th>Exactly true</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="Interested main">I can always manage to solve difficult problems if I try hard enough.</td>
+                    <td class="Interested">
+                        <label class="radio-inline"><input type="radio" name="Interested" value="1"></label>
+                    </td>
+                    <td class="Interested">
+                        <label class="radio-inline"><input type="radio" name="Interested" value="2"></label>
+                    </td>
+                    <td class="Interested">
+                        <label class="radio-inline"><input type="radio" name="Interested" value="3"></label>
+                    </td>
+                    <td class="Interested">
+                        <label class="radio-inline"><input type="radio" name="Interested" value="4"></label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="Distressed main">If someone opposes me, I can find the means and ways to get what Iwant.</td>
+                    <td class="Distressed">
+                        <label class="radio-inline"><input type="radio" name="Distressed" value="1"></label>
+                    </td>
+                    <td class="Distressed">
+                        <label class="radio-inline"><input type="radio" name="Distressed" value="2"></label>
+                    </td>
+                    <td class="Distressed">
+                        <label class="radio-inline"><input type="radio" name="Distressed" value="3"></label>
+                    </td>
+                    <td class="Distressed">
+                        <label class="radio-inline"><input type="radio" name="Distressed" value="4"></label>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="Excited main">It is easy for me to stick to my aims and accomplish my goals.</td>
+                    <td class="Excited">
+                        <label class="radio-inline"><input type="radio" name="Excited" value="1"></label>
+                    </td>
+                    <td class="Excited">
+                        <label class="radio-inline"><input type="radio" name="Excited" value="2"></label>
+                    </td>
+                    <td class="Excited">
+                        <label class="radio-inline"><input type="radio" name="Excited" value="3"></label>
+                    </td>
+                    <td class="Excited">
+                        <label class="radio-inline"><input type="radio" name="Excited" value="4"></label>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td class="Upset main">I am confident that I could deal efficiently with unexpected events.</td>
+                    <td class="Upset">
+                        <label class="radio-inline"><input type="radio" name="Upset" value="1"></label>
+                    </td>
+                    <td class="Upset">
+                        <label class="radio-inline"><input type="radio" name="Upset" value="2"></label>
+                    </td>
+                    <td class="Upset">
+                        <label class="radio-inline"><input type="radio" name="Upset" value="3"></label>
+                    </td>
+                    <td class="Upset">
+                        <label class="radio-inline"><input type="radio" name="Upset" value="4"></label>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td class="Strong main">Thanks to my resourcefulness, I know how to handle unforeseen situations.</td>
+                    <td class="Strong">
+                        <label class="radio-inline"><input type="radio" name="Strong" value="1"></label>
+                    </td>
+                    <td class="Strong">
+                        <label class="radio-inline"><input type="radio" name="Strong" value="2"></label>
+                    </td>
+                    <td class="Strong">
+                        <label class="radio-inline"><input type="radio" name="Strong" value="3"></label>
+                    </td>
+                    <td class="Strong">
+                        <label class="radio-inline"><input type="radio" name="Strong" value="4"></label>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td class="Guilty main">I can solve most problems if I invest the necessary effort.</td>
+                    <td class="Guilty">
+                        <label class="radio-inline"><input type="radio" name="Guilty" value="1"></label>
+                    </td>
+                    <td class="Guilty">
+                        <label class="radio-inline"><input type="radio" name="Guilty" value="2"></label>
+                    </td>
+                    <td class="Guilty">
+                        <label class="radio-inline"><input type="radio" name="Guilty" value="3"></label>
+                    </td>
+                    <td class="Guilty">
+                        <label class="radio-inline"><input type="radio" name="Guilty" value="4"></label>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td class="Scared main">I can remain calm when facing difficulties because I can rely on my coping abilities.</td>
+                    <td class="Scared">
+                        <label class="radio-inline"><input type="radio" name="Scared" value="1"></label>
+                    </td>
+                    <td class="Scared">
+                        <label class="radio-inline"><input type="radio" name="Scared" value="2"></label>
+                    </td>
+                    <td class="Scared">
+                        <label class="radio-inline"><input type="radio" name="Scared" value="3"></label>
+                    </td>
+                    <td class="Scared">
+                        <label class="radio-inline"><input type="radio" name="Scared" value="4"></label>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td class="Hostile main">When I am confronted with a problem, I can usually find several solutions.</td>
+                    <td class="Hostile">
+                        <label class="radio-inline"><input type="radio" name="Hostile" value="1"></label>
+                    </td>
+                    <td class="Hostile">
+                        <label class="radio-inline"><input type="radio" name="Hostile" value="2"></label>
+                    </td>
+                    <td class="Hostile">
+                        <label class="radio-inline"><input type="radio" name="Hostile" value="3"></label>
+                    </td>
+                    <td class="Hostile">
+                        <label class="radio-inline"><input type="radio" name="Hostile" value="4"></label>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td class="Enthusiastic main">If I am in trouble, I can usually think of a solution.</td>
+                    <td class="Enthusiastic">
+                        <label class="radio-inline"><input type="radio" name="Enthusiastic" value="1"></label>
+                    </td>
+                    <td class="Enthusiastic">
+                        <label class="radio-inline"><input type="radio" name="Enthusiastic" value="2"></label>
+                    </td>
+                    <td class="Enthusiastic">
+                        <label class="radio-inline"><input type="radio" name="Enthusiastic" value="3"></label>
+                    </td>
+                    <td class="Enthusiastic">
+                        <label class="radio-inline"><input type="radio" name="Enthusiastic" value="4"></label>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td class="Proud main">I can usually handle whatever comes my way.</td>
+                    <td class="Proud">
+                        <label class="radio-inline"><input type="radio" name="Proud" value="1"></label>
+                    </td>
+                    <td class="Proud">
+                        <label class="radio-inline"><input type="radio" name="Proud" value="2"></label>
+                    </td>
+                    <td class="Proud">
+                        <label class="radio-inline"><input type="radio" name="Proud" value="3"></label>
+                    </td>
+                    <td class="Proud">
+                        <label class="radio-inline"><input type="radio" name="Proud" value="4"></label>
+                    </td>
+                </tr>
+
+                
+            </tbody>
+        </table>
+
+
+        <div id="panasError" class="alert alert-danger alert-dismissible fade show" role="alert">
+            Please complete the highlighted fields.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+        </div>
+        <div id="panasNexButton">
+            <button type="button" id="panas_result" class="btn btn-primary">Next</button>
+        </div>
+
+    </div>
+    <div class="modal fade" id="bgStorySetupModal" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header" style="display:block !important">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Overall Task Description</h4>
+                </div>
+                <div class="modal-body">
+
+                    <p>
+                        <u>Background Story:</u> Teams are often a preferred choice to complete complex projects. The success of such teams depends on the right combination of factors such as team member personalities, roles, location where the teams
+                        meet, and how long they work among other things. Therefore, it is critical for project managers and hiring managers to consider these issues while hiring. However, since there is a lot of complex information that needs to be processed,
+                        it is difficult for one person to consider all issues and make the right choice on their own. To resolve this challenge, organizations are utilizing artificial intelligence (AI) chat bots to provide them with relevant information
+                        and helping them process this information in order to make effective decisions.
+                        <br /> In this scenario, you will work with one such AI chat bots, which will help you determine the composition of a project team. In this task, a chat bot will provide you with relevant information needed to make a decision regarding
+                        the team composition. Using AI, the chat bot will adapt to your needs and respond to requests you make for more information. With the assistance of the AI chat bot, your task is to decide each candidate’s role in the project and
+                        how many hours they will need to work on the project every week.
+                        <br />
+
+
+                    </p>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="/postgses.js"></script>
+</body>
+
+</html>
