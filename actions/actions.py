@@ -10,7 +10,7 @@
 from typing import Any, Text, Dict, List, Union
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import UserUtteranceReverted, SlotSet, EventType, ConversationPaused, ActionExecuted
+from rasa_sdk.events import UserUtteranceReverted, SlotSet, EventType, ConversationPaused
 from rasa_sdk.forms import FormAction
 import datetime
 import requests
@@ -60,34 +60,6 @@ class GetPanasScore(Action):
         else:
             return [SlotSet("panas_score", "1")]
         
-class GetScopeCounter(Action):
-
-    def name(self) -> Text:
-        return "action_get_scope_counter"
-
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        score=tracker.get_slot("scope_counter")
-        score=score+1
-        return [SlotSet("scope_counter", score)]
-
-class ActionSleep(Action):
-    def name(self) -> Text:
-        return "action_sleep"
-    
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        time.sleep(2)
-        return []
-
-
-class SetHelloFlag(Action):
-
-    def name(self) -> Text:
-        return "action_set_helloflag"
-
-    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-       # score=tracker.get_slot("hello_flag")
-       # score=1
-        return [SlotSet("hello_flag", "1")]
 
 class ActionDefaultAskAffirmation(Action):
     """Asks for an affirmation of the intent if NLU threshold is not met."""
@@ -169,77 +141,8 @@ class ActionDefaultAskAffirmation(Action):
             button_title = utterances[0] if len(utterances) > 0 else intent
 
         return button_title
-    
-class ActionDefaultAskAffirmation2(Action):
-    """Asks for an affirmation of the intent if NLU threshold is not met."""
 
-    def name(self) -> Text:
-        return "action_default_ask_affirmation2"
 
-    def __init__(self) -> None:
-        import csv
-
-        self.intent_mappings = {}
-        with open('intent_description_mapping.csv',
-                  newline='',
-                  encoding='utf-8') as file:
-            csv_reader = csv.reader(file)
-            for row in csv_reader:
-                self.intent_mappings[row[0]] = row[1]
-
-    def run(self,
-            dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]
-            ) -> List[EventType]:
-
-        intent_ranking = tracker.latest_message.get('intent_ranking', [])
-        if len(intent_ranking) > 1:
-            diff_intent_confidence = (intent_ranking[0].get("confidence") -
-                                      intent_ranking[1].get("confidence"))
-            if diff_intent_confidence < 0.2:
-                intent_ranking = intent_ranking[:2]
-            else:
-                intent_ranking = intent_ranking[:1]
-        first_intent_names = [intent.get('name', '')
-                              for intent in intent_ranking
-                              if intent.get('name', '') != 'out_of_scope']
-
-        message_title = "Sorry, I'm not sure I've understood you correctly 🤔 Do you mean..."
-
-        mapped_intents = [(name, self.intent_mappings.get(name, name))
-                          for name in first_intent_names]
-
-        entities = tracker.latest_message.get("entities", [])
-        entities_json, entities_text = get_formatted_entities(entities)
-
-        buttons = []
-        for intent in mapped_intents:
-            buttons.append({'title': intent[1] + entities_text,
-                            'payload': '/{}{}'.format(intent[0],
-                                                      entities_json)})
-
-        buttons.append({'title': 'Something else',
-                        'payload': '/out_of_scope'})
-
-        dispatcher.utter_button_message(message_title, buttons=buttons)
-
-        return []
-   
-def get_formatted_entities(entities: List[Dict[str, Any]]) -> (Text, Text):
-    key_value_entities = {}
-    for e in entities:
-        key_value_entities[e.get("entity")] = e.get("value")
-    entities_json = ""
-    entities_text = ""
-    if len(entities) > 0:
-        entities_json = json.dumps(key_value_entities)
-        entities_text = ["'{}': '{}'".format(k, key_value_entities[k])
-                         for k in key_value_entities]
-        entities_text = ", ".join(entities_text)
-        entities_text = " ({})".format(entities_text)
-
-    return entities_json, entities_text
 
 class ActionSkipToActivity(Action):
     def name(self) -> Text:
