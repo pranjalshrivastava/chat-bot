@@ -50,6 +50,10 @@ app.get("/cwb", checkNotAuthenticated, (req, res) => {
     res.render("cwb", { user: req.user.name });
 });
 
+app.get("/postcwb", checkNotAuthenticated, (req, res) => {
+    res.render("postcwb", { user: req.user.name });
+});
+
 app.get("/ces", checkNotAuthenticated, (req, res) => {
     res.render("ces", { user: req.user.name });
 });
@@ -65,6 +69,11 @@ app.get("/msq", checkNotAuthenticated, (req, res) => {
 app.get("/gses", checkNotAuthenticated, (req, res) => {
     res.render("gses", { user: req.user.name });
 });
+
+app.get("/postgses", checkNotAuthenticated, (req, res) => {
+    res.render("postgses", { user: req.user.name });
+});
+
 
 app.post("/panas-score", (req, res) => {
     var panasScore = req.body.score;
@@ -97,6 +106,15 @@ app.post("/gses-score", (req, res) => {
         console.log(err, res)
     });
 });
+
+app.post("/postgses-score", (req, res) => {
+    //var panasScore = req.body.score;
+    let queryText = `INSERT INTO post_gses VALUES ($1, $2, $3,$4, $5, $6,$7, $8, $9,$10,$11,$12)`
+    pool.query(queryText, [req.user.uid,req.user.name, req.body.val_1,req.body.val_2,req.body.val_3,req.body.val_4,req.body.val_5,req.body.val_6,req.body.val_7,req.body.val_8,req.body.val_9,req.body.val_10], (err, res) => {
+        console.log(err, res)
+    });
+});
+
 
 app.post("/pss-score", (req, res) => {
     //var panasScore = req.body.score;
