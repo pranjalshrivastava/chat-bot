@@ -109,7 +109,7 @@ $(document).ready(function() {
                 
             //window.open(window.location.href.replace("panas", 'chatbot'), '_blank');
                 
-            window.location.replace(window.location.href.replace("msq", 'chatbot'))
+            window.location.replace(window.location.href.replace("msq", 'inter'))
         }
     });
 
