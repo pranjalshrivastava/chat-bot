@@ -86,6 +86,10 @@ app.get("/postgses", checkNotAuthenticated, (req, res) => {
     res.render("postgses", { user: req.user.name });
 });
 
+app.get("/inter", checkNotAuthenticated, (req, res) => {
+    res.render("inter", { user: req.user.name });
+});
+
 
 app.post("/panas-score", (req, res) => {
     var panasScore = req.body.score;
