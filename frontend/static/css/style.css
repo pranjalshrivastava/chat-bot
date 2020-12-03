@@ -180,16 +180,21 @@ textarea-webkit-scrollbar {
 /* css for dropdown menu of the bot */
 
 #close,
-#restart,
-#clear {
+#logout,
+#post {
     cursor: pointer;
 }
+
 
 .dropdown-trigger {
     cursor: pointer;
     color: white;
     margin-right: 5px;
     float: right;
+}
+
+.dropdown-content {
+    min-width: 150px;
 }
 
 .dropdown-content li>a,
