@@ -64,6 +64,8 @@
                     <li><a href="#" id="clear">Clear</a></li>
                     <li><a href="#" id="restart">Restart</a></li>
                     <li><a href="#" id="close">Close</a></li>
+                    <li><a href="#" id="postassessment">Post Assessment</a></li>
+                    
                 </ul>
             </div>
 
@@ -97,6 +99,10 @@
 
     <script>
         var name = "<%= user %>"
+        $("#postassessment").click(function() {
+        window.location.replace(window.location.href.replace("chatbot", 'postcwb'))})
+        
+        
     </script>
 
 </body>
