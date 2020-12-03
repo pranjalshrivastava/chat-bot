@@ -90,6 +90,10 @@ app.get("/inter", checkNotAuthenticated, (req, res) => {
     res.render("inter", { user: req.user.name });
 });
 
+app.get("/postinter", checkNotAuthenticated, (req, res) => {
+    res.render("postinter", { user: req.user.name });
+});
+
 
 app.post("/panas-score", (req, res) => {
     var panasScore = req.body.score;
