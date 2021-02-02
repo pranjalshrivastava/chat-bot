@@ -10,7 +10,7 @@
 from typing import Any, Text, Dict, List, Union
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import UserUtteranceReverted, SlotSet, EventType, ConversationPaused
+from rasa_sdk.events import UserUtteranceReverted, SlotSet, EventType, ConversationPaused, ActionExecuted
 from rasa_sdk.forms import FormAction
 import datetime
 import requests
@@ -40,6 +40,31 @@ class GetName(Action):
             cursor.close()
             connection.close()
         return [SlotSet("name", name)]
+    
+class GetScopeCounter(Action):
+    def name(self) -> Text:
+        return "action_get_scope_counter"
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        score=tracker.get_slot("scope_counter")
+        score=score+1
+        return [SlotSet("scope_counter", score)]
+    
+class ActionSleep(Action):
+    def name(self) -> Text:
+        return "action_sleep"
+    
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        time.sleep(2)
+        return []
+    
+class SetHelloFlag(Action):
+    def name(self) -> Text:
+        return "action_set_helloflag"
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+       # score=tracker.get_slot("hello_flag")
+       # score=1
+        return [SlotSet("hello_flag", "1")]
+
 
 class GetPanasScore(Action):
 

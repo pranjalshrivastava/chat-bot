@@ -15,6 +15,7 @@ intents:
 - tell_more
 - share_problems
 - out_of_scope
+- greet_with_question
 
 entities:
 - name
@@ -33,6 +34,15 @@ slots:
     type: text
   panas_score:
     type: categorical
+    values:
+    - '1'
+    - '0'
+  scope_counter:
+    type: float
+    initial_value: 0
+  hello_flag:
+    type: categorical
+    initial_value: 0
     values:
     - '1'
     - '0'
@@ -57,6 +67,8 @@ responses:
   - text: Hi there! I'm Bot.
   - text: Hey, Bot here!
   - text: Hey there, it's Bot!
+  utter_helloagain:
+  - text: Hello Again, How are you feeling Today ?
   utter_ask_name:
   - text: What's your name?
   - text: How should I call you?
@@ -71,10 +83,15 @@ responses:
   - text: Nice to meet you, {name}!
   utter_ask_how_doing:
   - text: How are you doing today?
-  - text: How are you feeling today?
   - text: How are you doing?
   - text: How are you?
   - text: How are you today?
+  utter_ask_feeling:
+  - text: How are you feeling today?
+  utter_iamgood:
+  - text: I am good!
+  utter_hmm:
+  - text: Hmm..!
   utter_negative_panas:
   - text: Good! It's great to hear that. I noticed you indicated that you were feeling
       some negative emotions on your questionnaire earlier. Are you still feeling
@@ -173,8 +190,14 @@ responses:
   - text: I didn't quite get that, could you rephrase your message?
   - text: Could you rephrase your message? I didn't get it, I'm sorry.
 actions:
+- action_set_helloflag
+- action_sleep
 - action_get_panas_score
 - action_default_ask_affirmation
+- action_get_scope_counter
+# - action_default_fallback
+# - action_default_ask_rephrase
+# - action_severity_score
 - action_skip_to_activity
 forms:
 - severity_form_with_buttons

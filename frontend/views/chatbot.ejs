@@ -25,7 +25,6 @@
       vertical-align: middle;
       width: 200px;
       height: 200px;
-      background-color: #999;
     }
     .wraptocenter * {
       vertical-align: middle;
@@ -37,7 +36,9 @@
 <body>
 
 <div class="wraptocenter">
-  <img src="https://wallpapercave.com/wp/wc1765021.jpg">
+              <div style="margin-left:26%">
+                <img src="https://cdn.wallpapersafari.com/87/65/NRyTYH.jpg">
+            </div>
 </div>
 
     <div class="container">
@@ -61,9 +62,13 @@
 
                 <!-- Dropdown menu-->
                 <ul id='dropdown1' class='dropdown-content'>
-                    <li><a href="#" id="clear">Clear</a></li>
-                    <li><a href="#" id="restart">Restart</a></li>
+
+              
+                    
                     <li><a href="#" id="close">Close</a></li>
+                    <li><a href="#" id="postassessment">Post Assessment</a></li>
+                    <li><a href="#" id="logout">Logout</a></li>
+                    
                 </ul>
             </div>
 
@@ -97,6 +102,14 @@
 
     <script>
         var name = "<%= user %>"
+        $("#postassessment").click(function() {
+        window.location.replace(window.location.href.replace("chatbot", 'postinter'))})
+        
+        
+        $("#logout").click(function() {
+        window.location.replace(window.location.href.replace("chatbot", 'logout'))})
+        
+        
     </script>
 
 </body>

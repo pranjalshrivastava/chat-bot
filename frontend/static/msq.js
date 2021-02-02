@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-    var values = ['Interested', 'Distressed', 'Excited', 'Upset', 'Strong', 'Guilty', 'Scared', 'Hostile', 'Enthusiastic', 'Proud']
+    var values = ['Interested', 'Distressed', 'Excited', 'Upset', 'Strong', 'Guilty', 'Scared', 'Hostile', 'Enthusiastic', 'Proud',
+                 'Irritable','Alert','Ashamed','Inspired','Nervous','Determined','Attentive','Jittery','Active','Afraid']
 
     $("#panasError").hide()
 
@@ -108,7 +109,7 @@ $(document).ready(function() {
                 
             //window.open(window.location.href.replace("panas", 'chatbot'), '_blank');
                 
-            window.location.replace(window.location.href.replace("msq", 'chatbot'))
+            window.location.replace(window.location.href.replace("msq", 'inter'))
         }
     });
 

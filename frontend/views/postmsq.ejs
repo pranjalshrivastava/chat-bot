@@ -14,26 +14,21 @@
     <div class="container">
         <div id="info">
             <button id="taskInfo" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#bgStorySetupModal">Task Information</button>
-            
-  
-            
-            
         </div>
-        <p>Hello
-            <%= user %>! This scale consists of a number of words that describe different feelings and emotions. Read each item and then mark the appropriate answer in the space next to that word. <mark>Indicate the extent you have felt this way over the past day</mark>.</p>
-
+        <p><%= user %>, the purpose of this questionnaire is to give you a chance to tell how you feel about your present iob,
+            what things you are satisfied with and what things you are not satisfied with.</p>
         <table id="panas_table">
             <thead>
                 <th class="main"></th>
-                <th>Very slightly or not at all</th>
-                <th>A little</th>
-                <th>Mode&shy;rately</th>
-                <th>Quite a bit</th>
-                <th>Extre&shy;mely</th>
+                <th>Very Dissatisfied</th>
+                <th>Dissatisfied</th>
+                <th>Can't decide</th>
+                <th>Satisfied</th>
+                <th>Very Satisfied</th>
             </thead>
             <tbody>
                 <tr>
-                    <td class="Interested main">Interested</td>
+                    <td class="Interested main">Being able to keep busy all the time</td>
                     <td class="Interested">
                         <label class="radio-inline"><input type="radio" name="Interested" value="1"></label>
                     </td>
@@ -52,7 +47,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Distressed main">Distressed</td>
+                    <td class="Distressed main">The chance to work alone on the job</td>
                     <td class="Distressed">
                         <label class="radio-inline"><input type="radio" name="Distressed" value="1"></label>
                     </td>
@@ -71,7 +66,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Excited main">Excited</td>
+                    <td class="Excited main">The chance to do different things from time to time</td>
                     <td class="Excited">
                         <label class="radio-inline"><input type="radio" name="Excited" value="1"></label>
                     </td>
@@ -90,7 +85,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Upset main">Upset</td>
+                    <td class="Upset main">The chance to be "somebody" in the community</td>
                     <td class="Upset">
                         <label class="radio-inline"><input type="radio" name="Upset" value="1"></label>
                     </td>
@@ -109,7 +104,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Strong main">Strong</td>
+                    <td class="Strong main">The way my boss handles his/her workers</td>
                     <td class="Strong">
                         <label class="radio-inline"><input type="radio" name="Strong" value="1"></label>
                     </td>
@@ -128,7 +123,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Guilty main">Guilty</td>
+                    <td class="Guilty main">The competence of my supervisor in making decisions</td>
                     <td class="Guilty">
                         <label class="radio-inline"><input type="radio" name="Guilty" value="1"></label>
                     </td>
@@ -147,7 +142,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Scared main">Scared</td>
+                    <td class="Scared main">Being able to do things that don't go against my conscience</td>
                     <td class="Scared">
                         <label class="radio-inline"><input type="radio" name="Scared" value="1"></label>
                     </td>
@@ -166,7 +161,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Hostile main">Hostile</td>
+                    <td class="Hostile main">The way my job provides for steady employment</td>
                     <td class="Hostile">
                         <label class="radio-inline"><input type="radio" name="Hostile" value="1"></label>
                     </td>
@@ -185,7 +180,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Enthusiastic main">Enthusiastic</td>
+                    <td class="Enthusiastic main">The chance to do things for other people</td>
                     <td class="Enthusiastic">
                         <label class="radio-inline"><input type="radio" name="Enthusiastic" value="1"></label>
                     </td>
@@ -204,7 +199,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Proud main">Proud</td>
+                    <td class="Proud main">The chance to tell people what to do</td>
                     <td class="Proud">
                         <label class="radio-inline"><input type="radio" name="Proud" value="1"></label>
                     </td>
@@ -223,7 +218,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Irritable main">Irritable</td>
+                    <td class="Irritable main">The chance to do something that makes use of my abilities</td>
                     <td class="Irritable">
                         <label class="radio-inline"><input type="radio" name="Irritable" value="1"></label>
                     </td>
@@ -242,7 +237,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Alert main">Alert</td>
+                    <td class="Alert main">The way company policies are put into practice</td>
                     <td class="Alert">
                         <label class="radio-inline"><input type="radio" name="Alert" value="1"></label>
                     </td>
@@ -261,7 +256,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Ashamed main">Ashamed</td>
+                    <td class="Ashamed main">My pay and the amount of work I do</td>
                     <td class="Ashamed">
                         <label class="radio-inline"><input type="radio" name="Ashamed" value="1"></label>
                     </td>
@@ -280,7 +275,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Inspired main">Inspired</td>
+                    <td class="Inspired main">The chances for advancement on this job</td>
                     <td class="Inspired">
                         <label class="radio-inline"><input type="radio" name="Inspired" value="1"></label>
                     </td>
@@ -299,7 +294,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Nervous main">Nervous</td>
+                    <td class="Nervous main">The freedom to use my own judgment</td>
                     <td class="Nervous">
                         <label class="radio-inline"><input type="radio" name="Nervous" value="1"></label>
                     </td>
@@ -318,7 +313,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Determined main">Determined</td>
+                    <td class="Determined main">The chance to try my own methods of doing the job</td>
                     <td class="Determined">
                         <label class="radio-inline"><input type="radio" name="Determined" value="1"></label>
                     </td>
@@ -337,7 +332,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Attentive main">Attentive</td>
+                    <td class="Attentive main">The working conditions</td>
                     <td class="Attentive">
                         <label class="radio-inline"><input type="radio" name="Attentive" value="1"></label>
                     </td>
@@ -356,7 +351,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Jittery main">Jittery</td>
+                    <td class="Jittery main">The way my co-workers get along with each other</td>
                     <td class="Jittery">
                         <label class="radio-inline"><input type="radio" name="Jittery" value="1"></label>
                     </td>
@@ -375,7 +370,7 @@
                 </tr>
 
                 <tr>
-                    <td class="Active main">Active</td>
+                    <td class="Active main">The praise I get for doing a good job</td>
                     <td class="Active">
                         <label class="radio-inline"><input type="radio" name="Active" value="1"></label>
                     </td>
@@ -393,8 +388,9 @@
                     </td>
                 </tr>
 
+
                 <tr>
-                    <td class="Afraid main">Afraid</td>
+                    <td class="Afraid main">The feeling of accomplishment I get from the job</td>
                     <td class="Afraid">
                         <label class="radio-inline"><input type="radio" name="Afraid" value="1"></label>
                     </td>
@@ -411,6 +407,11 @@
                         <label class="radio-inline"><input type="radio" name="Afraid" value="5"></label>
                     </td>
                 </tr>
+
+
+
+
+                
             </tbody>
         </table>
 
@@ -422,7 +423,7 @@
                 </button>
         </div>
         <div id="panasNexButton">
-            <button type="button" id="panas_result" class="btn btn-primary">Next</button>
+            <button type="button" id="panas_result" class="btn btn-primary">Logout</button>
         </div>
 
     </div>
@@ -452,26 +453,15 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                    <a href="/users/logout" class="btn btn-info btn-sm" id="panas_logout">Logout</a>
                 </div>
             </div>
 
         </div>
     </div>
-    
-    <!-- The Modal -->
-    <div id="myModal" class="popper">
-
-      <!-- Modal content -->
-      <div class="popper-content">
-        <span class="popper-close">&times;</span>
-        <p id="popper-text">Thank you for your responses. Now, you will be redirected to the chatbot. </p>
-      </div>
-
-    </div>
 
 
-    <script src="/panas.js"></script>
+    <script src="/postmsq.js"></script>
 </body>
 
 </html>

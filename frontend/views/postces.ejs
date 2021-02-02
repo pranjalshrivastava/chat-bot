@@ -15,25 +15,21 @@
         <div id="info">
             <button id="taskInfo" type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#bgStorySetupModal">Task Information</button>
             
-  
-            
-            
         </div>
         <p>Hello
-            <%= user %>! This scale consists of a number of words that describe different feelings and emotions. Read each item and then mark the appropriate answer in the space next to that word. <mark>Indicate the extent you have felt this way over the past day</mark>.</p>
-
+            <%= user %>! Below is a list of the ways you might have felt or behaved. Please tell me how often you have felt this way during the past week.</p>
         <table id="panas_table">
             <thead>
                 <th class="main"></th>
-                <th>Very slightly or not at all</th>
-                <th>A little</th>
-                <th>Mode&shy;rately</th>
-                <th>Quite a bit</th>
-                <th>Extre&shy;mely</th>
+                <th>Rarely or none of the time (less than 1 day )</th>
+                <th>Some or a little of the time (1-2 days)</th>
+                <th>Occasionally or a moderate amount of time(3-4 days)</th>
+                <th>Most or all of the time (5-7days)</th>
             </thead>
             <tbody>
                 <tr>
-                    <td class="Interested main">Interested</td>
+                    <td class="Interested main">I was bothered by things that usually
+                        don’t bother me.</td>
                     <td class="Interested">
                         <label class="radio-inline"><input type="radio" name="Interested" value="1"></label>
                     </td>
@@ -46,13 +42,11 @@
                     <td class="Interested">
                         <label class="radio-inline"><input type="radio" name="Interested" value="4"></label>
                     </td>
-                    <td class="Interested">
-                        <label class="radio-inline"><input type="radio" name="Interested" value="5"></label>
-                    </td>
                 </tr>
 
                 <tr>
-                    <td class="Distressed main">Distressed</td>
+                    <td class="Distressed main">I did not feel like eating; my appetite
+                        was poor.</td>
                     <td class="Distressed">
                         <label class="radio-inline"><input type="radio" name="Distressed" value="1"></label>
                     </td>
@@ -65,13 +59,12 @@
                     <td class="Distressed">
                         <label class="radio-inline"><input type="radio" name="Distressed" value="4"></label>
                     </td>
-                    <td class="Distressed">
-                        <label class="radio-inline"><input type="radio" name="Distressed" value="5"></label>
-                    </td>
                 </tr>
 
                 <tr>
-                    <td class="Excited main">Excited</td>
+                    <td class="Excited main">I felt that I could not shake off the
+                        blues even with help from my family or
+                        friends.</td>
                     <td class="Excited">
                         <label class="radio-inline"><input type="radio" name="Excited" value="1"></label>
                     </td>
@@ -84,13 +77,12 @@
                     <td class="Excited">
                         <label class="radio-inline"><input type="radio" name="Excited" value="4"></label>
                     </td>
-                    <td class="Excited">
-                        <label class="radio-inline"><input type="radio" name="Excited" value="5"></label>
-                    </td>
+
                 </tr>
 
                 <tr>
-                    <td class="Upset main">Upset</td>
+                    <td class="Upset main">I felt I was just as good as other
+                        people.</td>
                     <td class="Upset">
                         <label class="radio-inline"><input type="radio" name="Upset" value="1"></label>
                     </td>
@@ -103,13 +95,12 @@
                     <td class="Upset">
                         <label class="radio-inline"><input type="radio" name="Upset" value="4"></label>
                     </td>
-                    <td class="Upset">
-                        <label class="radio-inline"><input type="radio" name="Upset" value="5"></label>
-                    </td>
+
                 </tr>
 
                 <tr>
-                    <td class="Strong main">Strong</td>
+                    <td class="Strong main">I had trouble keeping my mind on
+                        what I was doing.</td>
                     <td class="Strong">
                         <label class="radio-inline"><input type="radio" name="Strong" value="1"></label>
                     </td>
@@ -122,32 +113,11 @@
                     <td class="Strong">
                         <label class="radio-inline"><input type="radio" name="Strong" value="4"></label>
                     </td>
-                    <td class="Strong">
-                        <label class="radio-inline"><input type="radio" name="Strong" value="5"></label>
-                    </td>
+
                 </tr>
 
                 <tr>
-                    <td class="Guilty main">Guilty</td>
-                    <td class="Guilty">
-                        <label class="radio-inline"><input type="radio" name="Guilty" value="1"></label>
-                    </td>
-                    <td class="Guilty">
-                        <label class="radio-inline"><input type="radio" name="Guilty" value="2"></label>
-                    </td>
-                    <td class="Guilty">
-                        <label class="radio-inline"><input type="radio" name="Guilty" value="3"></label>
-                    </td>
-                    <td class="Guilty">
-                        <label class="radio-inline"><input type="radio" name="Guilty" value="4"></label>
-                    </td>
-                    <td class="Guilty">
-                        <label class="radio-inline"><input type="radio" name="Guilty" value="5"></label>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td class="Scared main">Scared</td>
+                    <td class="Scared main">I felt depressed.</td>
                     <td class="Scared">
                         <label class="radio-inline"><input type="radio" name="Scared" value="1"></label>
                     </td>
@@ -160,13 +130,12 @@
                     <td class="Scared">
                         <label class="radio-inline"><input type="radio" name="Scared" value="4"></label>
                     </td>
-                    <td class="Scared">
-                        <label class="radio-inline"><input type="radio" name="Scared" value="5"></label>
-                    </td>
+
                 </tr>
 
                 <tr>
-                    <td class="Hostile main">Hostile</td>
+                    <td class="Hostile main">I felt that everything I did was an
+                        effort.</td>
                     <td class="Hostile">
                         <label class="radio-inline"><input type="radio" name="Hostile" value="1"></label>
                     </td>
@@ -179,13 +148,11 @@
                     <td class="Hostile">
                         <label class="radio-inline"><input type="radio" name="Hostile" value="4"></label>
                     </td>
-                    <td class="Hostile">
-                        <label class="radio-inline"><input type="radio" name="Hostile" value="5"></label>
-                    </td>
+
                 </tr>
 
                 <tr>
-                    <td class="Enthusiastic main">Enthusiastic</td>
+                    <td class="Enthusiastic main">I felt hopeful about the future.</td>
                     <td class="Enthusiastic">
                         <label class="radio-inline"><input type="radio" name="Enthusiastic" value="1"></label>
                     </td>
@@ -198,13 +165,11 @@
                     <td class="Enthusiastic">
                         <label class="radio-inline"><input type="radio" name="Enthusiastic" value="4"></label>
                     </td>
-                    <td class="Enthusiastic">
-                        <label class="radio-inline"><input type="radio" name="Enthusiastic" value="5"></label>
-                    </td>
+
                 </tr>
 
                 <tr>
-                    <td class="Proud main">Proud</td>
+                    <td class="Proud main">I thought my life had been a failure.</td>
                     <td class="Proud">
                         <label class="radio-inline"><input type="radio" name="Proud" value="1"></label>
                     </td>
@@ -217,13 +182,27 @@
                     <td class="Proud">
                         <label class="radio-inline"><input type="radio" name="Proud" value="4"></label>
                     </td>
-                    <td class="Proud">
-                        <label class="radio-inline"><input type="radio" name="Proud" value="5"></label>
-                    </td>
                 </tr>
 
                 <tr>
-                    <td class="Irritable main">Irritable</td>
+                    <td class="Guilty main">I felt fearful.</td>
+                    <td class="Guilty">
+                        <label class="radio-inline"><input type="radio" name="Guilty" value="1"></label>
+                    </td>
+                    <td class="Guilty">
+                        <label class="radio-inline"><input type="radio" name="Guilty" value="2"></label>
+                    </td>
+                    <td class="Guilty">
+                        <label class="radio-inline"><input type="radio" name="Guilty" value="3"></label>
+                    </td>
+                    <td class="Guilty">
+                        <label class="radio-inline"><input type="radio" name="Guilty" value="4"></label>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td class="Irritable main">My sleep was restless.</td>
                     <td class="Irritable">
                         <label class="radio-inline"><input type="radio" name="Irritable" value="1"></label>
                     </td>
@@ -236,13 +215,11 @@
                     <td class="Irritable">
                         <label class="radio-inline"><input type="radio" name="Irritable" value="4"></label>
                     </td>
-                    <td class="Irritable">
-                        <label class="radio-inline"><input type="radio" name="Irritable" value="5"></label>
-                    </td>
+
                 </tr>
 
                 <tr>
-                    <td class="Alert main">Alert</td>
+                    <td class="Alert main">I was happy.</td>
                     <td class="Alert">
                         <label class="radio-inline"><input type="radio" name="Alert" value="1"></label>
                     </td>
@@ -255,13 +232,11 @@
                     <td class="Alert">
                         <label class="radio-inline"><input type="radio" name="Alert" value="4"></label>
                     </td>
-                    <td class="Alert">
-                        <label class="radio-inline"><input type="radio" name="Alert" value="5"></label>
-                    </td>
+
                 </tr>
 
                 <tr>
-                    <td class="Ashamed main">Ashamed</td>
+                    <td class="Ashamed main">I talked less than usual.</td>
                     <td class="Ashamed">
                         <label class="radio-inline"><input type="radio" name="Ashamed" value="1"></label>
                     </td>
@@ -274,13 +249,11 @@
                     <td class="Ashamed">
                         <label class="radio-inline"><input type="radio" name="Ashamed" value="4"></label>
                     </td>
-                    <td class="Ashamed">
-                        <label class="radio-inline"><input type="radio" name="Ashamed" value="5"></label>
-                    </td>
+
                 </tr>
 
                 <tr>
-                    <td class="Inspired main">Inspired</td>
+                    <td class="Inspired main">I felt lonely.</td>
                     <td class="Inspired">
                         <label class="radio-inline"><input type="radio" name="Inspired" value="1"></label>
                     </td>
@@ -293,13 +266,11 @@
                     <td class="Inspired">
                         <label class="radio-inline"><input type="radio" name="Inspired" value="4"></label>
                     </td>
-                    <td class="Inspired">
-                        <label class="radio-inline"><input type="radio" name="Inspired" value="5"></label>
-                    </td>
+
                 </tr>
 
                 <tr>
-                    <td class="Nervous main">Nervous</td>
+                    <td class="Nervous main">People were unfriendly.</td>
                     <td class="Nervous">
                         <label class="radio-inline"><input type="radio" name="Nervous" value="1"></label>
                     </td>
@@ -312,13 +283,11 @@
                     <td class="Nervous">
                         <label class="radio-inline"><input type="radio" name="Nervous" value="4"></label>
                     </td>
-                    <td class="Nervous">
-                        <label class="radio-inline"><input type="radio" name="Nervous" value="5"></label>
-                    </td>
+
                 </tr>
 
                 <tr>
-                    <td class="Determined main">Determined</td>
+                    <td class="Determined main">I enjoyed life.</td>
                     <td class="Determined">
                         <label class="radio-inline"><input type="radio" name="Determined" value="1"></label>
                     </td>
@@ -331,13 +300,11 @@
                     <td class="Determined">
                         <label class="radio-inline"><input type="radio" name="Determined" value="4"></label>
                     </td>
-                    <td class="Determined">
-                        <label class="radio-inline"><input type="radio" name="Determined" value="5"></label>
-                    </td>
+
                 </tr>
 
                 <tr>
-                    <td class="Attentive main">Attentive</td>
+                    <td class="Attentive main">I had crying spells.</td>
                     <td class="Attentive">
                         <label class="radio-inline"><input type="radio" name="Attentive" value="1"></label>
                     </td>
@@ -350,13 +317,11 @@
                     <td class="Attentive">
                         <label class="radio-inline"><input type="radio" name="Attentive" value="4"></label>
                     </td>
-                    <td class="Attentive">
-                        <label class="radio-inline"><input type="radio" name="Attentive" value="5"></label>
-                    </td>
+
                 </tr>
 
                 <tr>
-                    <td class="Jittery main">Jittery</td>
+                    <td class="Jittery main">I felt sad.</td>
                     <td class="Jittery">
                         <label class="radio-inline"><input type="radio" name="Jittery" value="1"></label>
                     </td>
@@ -369,13 +334,11 @@
                     <td class="Jittery">
                         <label class="radio-inline"><input type="radio" name="Jittery" value="4"></label>
                     </td>
-                    <td class="Jittery">
-                        <label class="radio-inline"><input type="radio" name="Jittery" value="5"></label>
-                    </td>
+
                 </tr>
 
                 <tr>
-                    <td class="Active main">Active</td>
+                    <td class="Active main">I felt that people dislike me.</td>
                     <td class="Active">
                         <label class="radio-inline"><input type="radio" name="Active" value="1"></label>
                     </td>
@@ -388,13 +351,11 @@
                     <td class="Active">
                         <label class="radio-inline"><input type="radio" name="Active" value="4"></label>
                     </td>
-                    <td class="Active">
-                        <label class="radio-inline"><input type="radio" name="Active" value="5"></label>
-                    </td>
+
                 </tr>
 
                 <tr>
-                    <td class="Afraid main">Afraid</td>
+                    <td class="Afraid main">I could not get “going.”</td>
                     <td class="Afraid">
                         <label class="radio-inline"><input type="radio" name="Afraid" value="1"></label>
                     </td>
@@ -407,10 +368,12 @@
                     <td class="Afraid">
                         <label class="radio-inline"><input type="radio" name="Afraid" value="4"></label>
                     </td>
-                    <td class="Afraid">
-                        <label class="radio-inline"><input type="radio" name="Afraid" value="5"></label>
-                    </td>
+
                 </tr>
+
+
+
+                
             </tbody>
         </table>
 
@@ -458,20 +421,9 @@
 
         </div>
     </div>
-    
-    <!-- The Modal -->
-    <div id="myModal" class="popper">
-
-      <!-- Modal content -->
-      <div class="popper-content">
-        <span class="popper-close">&times;</span>
-        <p id="popper-text">Thank you for your responses. Now, you will be redirected to the chatbot. </p>
-      </div>
-
-    </div>
 
 
-    <script src="/panas.js"></script>
+    <script src="/postces.js"></script>
 </body>
 
 </html>
