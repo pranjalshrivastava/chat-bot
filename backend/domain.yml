@@ -23,6 +23,7 @@ entities:
 - emotion_bother
 - emotion_impact
 - sentiment
+
 slots:
   emotion_bother:
     type: unfeaturized
@@ -30,6 +31,7 @@ slots:
     type: unfeaturized
   emotion_intensity:
     type: unfeaturized
+  
   name:
     type: text
   panas_score:
@@ -41,6 +43,12 @@ slots:
     type: float
     initial_value: 0
   hello_flag:
+    type: categorical
+    initial_value: 0
+    values:
+    - '1'
+    - '0'
+  mood_share_flag:
     type: categorical
     initial_value: 0
     values:
@@ -67,8 +75,28 @@ responses:
   - text: Hi there! I'm Bot.
   - text: Hey, Bot here!
   - text: Hey there, it's Bot!
+  # Buttons added by ANU to add fixed responses
   utter_helloagain:
   - text: Hello Again, How are you feeling Today ?
+    buttons:
+      - title: "Awesome 😁"
+        payload: '/mood_great'
+        
+      - title: "Really Good 😀"
+        payload: '/mood_great'
+       
+      - title: "Good 🙂"
+        payload: '/mood_great'
+        
+      - title: "Bad 😑"
+        payload: '/mood_unhappy'
+        
+      - title: "Really Bad 😔 "
+        payload: '/mood_unhappy'
+       
+      - title: "Awful 😣 "
+        payload: '/mood_unhappy'
+        
   utter_ask_name:
   - text: What's your name?
   - text: How should I call you?
@@ -86,8 +114,27 @@ responses:
   - text: How are you doing?
   - text: How are you?
   - text: How are you today?
-  utter_ask_feeling:
+  utter_ask_feeling: # Add options here-Anu
   - text: How are you feeling today?
+    buttons:
+      - title: "Awesome 😁"
+        payload: '/mood_great'
+        
+      - title: "Really Good 😀"
+        payload: '/mood_great'
+       
+      - title: "Good 🙂"
+        payload: '/mood_great'
+        
+      - title: "Bad 😑"
+        payload: '/mood_unhappy'
+        
+      - title: "Really Bad 😔 "
+        payload: '/mood_unhappy'
+       
+      - title: "Awful 😣 "
+        payload: '/mood_unhappy'
+
   utter_iamgood:
   - text: I am good!
   utter_hmm:
@@ -189,8 +236,13 @@ responses:
   - text: I'm afraid I didn't get what you just said. Could you rephrase that?
   - text: I didn't quite get that, could you rephrase your message?
   - text: Could you rephrase your message? I didn't get it, I'm sorry.
+  utter_check:
+  - text: Check.. Check
+  utter_handle_regreet:
+  - text: Checked this
 actions:
 - action_set_helloflag
+- action_set_moodshareflag
 - action_sleep
 - action_get_panas_score
 - action_default_ask_affirmation
