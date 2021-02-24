@@ -136,7 +136,7 @@
 * affirm
   - utter_ask_why_bad
 * affirm
-  - utter_tell_me_sa
+  - utter_tell_me_sad
   - utter_ask_emotion_intensity
 > check_venting_group
 
