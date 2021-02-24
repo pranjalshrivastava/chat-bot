@@ -68,6 +68,7 @@
 - nah
 - na
 - nope
+- May be later
 
 ## intent:mood_great
 - perfect
@@ -103,6 +104,14 @@
 - not good
 - so so
 - could be better
+- I am feeling sad 
+- I am having a bad day 
+- Feeling low 
+- I am feeling Horrible
+- very low
+- bad day
+- my mood is bad
+- My mood is low
 
 ## intent:skip_to_activity
 - yes, I'm sure. Let's skip to the activity
@@ -135,6 +144,7 @@
 
 ## intent:share_problems
 - i had a bad day at work
+- i had a bad day at work yesterday
 - i have problems at home
 - i got in trouble
 - i am okay overall, but somewhat worried
