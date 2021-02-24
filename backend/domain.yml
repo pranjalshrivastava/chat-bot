@@ -164,11 +164,19 @@ responses:
       chat a bit first, if you'd like. If there are any problems or stressors you'd
       like to vent about, you have the opportunity to do so now. Is there anything
       you'd like to talk to me about?
+    buttons:
+    - title: "Yes"
+      payload: '/affirm'
+      
+    - title: "May be later"
+      payload: '/deny'
+
   utter_denied_chat:
   - text: Okay. Lots of us have stressors that may not always be on our minds, but
       when we are thinking about them, they can really bring about some negative feelings.
       I'd like to show you a simple technique that can help you manage your negative
       emotions when they do come up.
+
   utter_goodbye:
   - text: Bye
   utter_denied_why_bad:
@@ -181,9 +189,10 @@ responses:
       
     - title: "No, I'd actually like to tell you about it"
       payload: '/tell_more'
+
   utter_tell_me_sad:
-  - text: I'm glad to hear that you feel comfortable telling me about it. You can
-      go ahead and tell me about what's been going on, the way you're feeling and why.
+  - text: I'm glad to hear that you feel comfortable telling me about it. I will give you an opportunity to do
+      so in just a moment. First, I just have a few questions for you.
   utter_tell_me_happy:
   - text: Great! You can go ahead and tell me about what's been going on, the way you're feeling and why.
   utter_ask_emotion_intensity:
