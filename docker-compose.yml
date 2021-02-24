@@ -3,11 +3,11 @@ services:
     cloudsql-proxy:
       container_name: cloudsql-proxy
       image: gcr.io/cloudsql-docker/gce-proxy:1.16
-      command: /cloud_sql_proxy -dir=/cloudsql -instances=rasa-290419:us-central1:rasa-db=tcp:0.0.0.0:5432 -credential_file=/secrets/cloudsql/credentials.json
+      command: /cloud_sql_proxy -dir=/cloudsql -instances=amiable-bonus-303616:us-central1:chatbot-db=tcp:0.0.0.0:5432 -credential_file=/secrets/cloudsql/credentials.json
       ports:
         - 5432:5432
       volumes:
-        - /home/msnrohithvarma/rasa-290419-976c086f491d.json:/secrets/cloudsql/credentials.json
+        - /home/usfwellbeingchatbot/amiable-bonus-303616-c8b4873d1c3f.json:/secrets/cloudsql/credentials.json
     nginx:
       container_name: "nginx"
       image: nginx
