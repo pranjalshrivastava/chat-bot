@@ -145,19 +145,19 @@ responses:
       that way?
     buttons:
       - title: "Yes"
-      payload: '/affirm'
+        payload: '/affirm'
       
       - title: "No"
-      payload: '/deny'
+        payload: '/deny'
       
   utter_ask_why_bad:
   - text: I'm sorry to hear that you're feeling that way. Would you like to tell me more about it?
     buttons:
       - title: "Yes"
-      payload: '/affirm'
+        payload: '/affirm'
       
       - title: "May be later"
-      payload: '/deny'
+        payload: '/deny'
   
   utter_happy_offer_chat:
   - text: Good! It's great to hear that. Soon, we'll play a quick game, but we can
@@ -177,10 +177,10 @@ responses:
       ideas to help you feel better.
       buttons:
       - title: "Yes, I am sure, Let's skip to the activity"
-      payload: '/skip_to_activity'
+        payload: '/skip_to_activity'
       
       - title: "No, I'd actually like to tell you about it"
-      payload: '/tell_more'
+        payload: '/tell_more'
   utter_tell_me_sad:
   - text: I'm glad to hear that you feel comfortable telling me about it. You can
       go ahead and tell me about what's been going on, the way you're feeling and why.
