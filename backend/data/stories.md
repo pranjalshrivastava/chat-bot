@@ -5,9 +5,15 @@
   - utter_ask_feeling
 > check_asked_mood
 
+## Test Greet Track
+* greet
+  - slot{"mood_share_flag":"1"}
+  - utter_handle_regreet
+
 ## regreet greet
 * greet
   - slot{"hello_flag":"1"}
+  - slot{"mood_share_flag":"0"}
   - utter_helloagain
 > check_asked_mood
 
@@ -130,7 +136,8 @@
 * affirm
   - utter_ask_why_bad
 * affirm
-  - utter_tell_me_sad
+  - utter_tell_me_sa
+  - utter_ask_emotion_intensity:
 > check_venting_group
 
 ## good mood negative panas still bad affirmed
@@ -186,7 +193,9 @@
 ## bad mood denied skip to activity
 > check_asked_mood
 * mood_unhappy
+  - slot{"mood_share_flag":"0"}
   - utter_ask_why_bad
+  - action_set_moodshareflag
 * deny
   - utter_denied_why_bad
 * skip_to_activity
@@ -196,7 +205,9 @@
 ## bad mood denied tell more
 > check_asked_mood
 * mood_unhappy
+  - slot{"mood_share_flag":"0"}
   - utter_ask_why_bad
+  - action_set_moodshareflag
 * deny
   - utter_denied_why_bad
 * tell_more
@@ -206,7 +217,9 @@
 ## bad mood denied tell more
 > check_asked_mood
 * mood_unhappy
+  - slot{"mood_share_flag":"0"}
   - utter_ask_why_bad
+  - action_set_moodshareflag
 * deny
   - utter_denied_why_bad
 > check_venting_group
@@ -214,7 +227,9 @@
 ## bad mood affirmed
 > check_asked_mood
 * mood_unhappy
+  - slot{"mood_share_flag":"0"}
   - utter_ask_why_bad
+  - action_set_moodshareflag
 * affirm
   - utter_tell_me_sad
 > check_venting_group
@@ -222,9 +237,15 @@
 ## bad mood affirmed
 > check_asked_mood
 * mood_unhappy
+  - slot{"mood_share_flag":"0"}
   - utter_ask_why_bad
+  - action_set_moodshareflag
 > check_venting_group
 
+## yes affirmed
+* affirm
+ - slot{"mood_share_flag":"1"}
+ - utter_check
 ## venting group
 > check_venting_group
 * share_problems
