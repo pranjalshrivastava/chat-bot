@@ -115,7 +115,8 @@ responses:
   - text: How are you?
   - text: How are you today?
   utter_ask_feeling: # Add options here-Anu
-  - text: How are you feeling today?
+  - text: Hi {name}!!. Good Morning.
+          How are you feeling today?
     buttons:
       - title: "Awesome 😁"
         payload: '/mood_great'
@@ -196,7 +197,9 @@ responses:
   utter_tell_me_happy:
   - text: Great! You can go ahead and tell me about what's been going on, the way you're feeling and why.
   utter_ask_emotion_intensity:
-  - text: "How intense have these emotions been for you?"
+  - text: I'm glad to hear that you feel comfortable telling me about it. I will give you an opportunity to do
+          so in just a moment. First, I just have a few questions for you.
+          How intense have these emotions been for you?
     buttons:
     - title: "Very mild"
       payload: '/share_problems{"emotion_intensity": 1}'
