@@ -215,6 +215,9 @@
 * tell_more
   <!-- - utter_tell_me_sad -->
   - utter_ask_emotion_intensity
+  - utter_ask_emotion_bother
+  - utter_ask_emotion_impact
+  - utter_thanks_for_answering
 > check_venting_group
 
 ## bad mood denied tell more
@@ -235,6 +238,9 @@
   - action_set_moodshareflag
 * affirm
   - utter_ask_emotion_intensity
+  - utter_ask_emotion_bother
+  - utter_ask_emotion_impact
+  - utter_thanks_for_answering
   <!-- - utter_tell_me_sad -->
 > check_venting_group
 
