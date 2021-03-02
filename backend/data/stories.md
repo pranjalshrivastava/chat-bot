@@ -1,7 +1,7 @@
 ## first time greet
 * greet
-  - slot{"hello_flag":"0"}
-  - action_set_helloflag
+  <!-- - slot{"hello_flag":"0"}
+  - action_set_helloflag -->
   - utter_ask_feeling
 > check_asked_mood
 
@@ -72,7 +72,8 @@
   - slot{"panas_score" : "1"}
   - utter_happy_offer_chat
 * affirm
-  - utter_tell_me_happy
+  <!-- - utter_tell_me_happy -->
+  - utter_ask_emotion_intensity
 > check_venting_group
 
 ## good mood positive panas affirmed chat
@@ -128,6 +129,7 @@
 > check_non-venting_group
 
 ## good mood negative panas still bad affirmed
+## Anu_2/28/2021
 > check_asked_mood
 * mood_great
   - action_get_panas_score
@@ -136,7 +138,7 @@
 * affirm
   - utter_ask_why_bad
 * affirm
-  - utter_tell_me_sad
+  
   - utter_ask_emotion_intensity
 > check_venting_group
 
@@ -211,7 +213,8 @@
 * deny
   - utter_denied_why_bad
 * tell_more
-  - utter_tell_me_sad
+  <!-- - utter_tell_me_sad -->
+  - utter_ask_emotion_intensity
 > check_venting_group
 
 ## bad mood denied tell more
@@ -231,7 +234,8 @@
   - utter_ask_why_bad
   - action_set_moodshareflag
 * affirm
-  - utter_tell_me_sad
+  - utter_ask_emotion_intensity
+  <!-- - utter_tell_me_sad -->
 > check_venting_group
 
 ## bad mood affirmed
