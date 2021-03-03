@@ -74,6 +74,12 @@
 * affirm
   <!-- - utter_tell_me_happy -->
   - utter_ask_emotion_intensity
+* share_problems
+  - utter_ask_emotion_bother
+* share_problems
+  - utter_ask_emotion_impact
+* share_problems
+  - utter_thanks_for_answering
 > check_venting_group
 
 ## good mood positive panas affirmed chat
@@ -103,10 +109,17 @@
 * deny
   - utter_happy_offer_chat
 * affirm
-  - utter_tell_me_happy
+  <!-- - utter_tell_me_happy -->
+  - utter_ask_emotion_intensity
+* share_problems
+  - utter_ask_emotion_bother
+* share_problems
+  - utter_ask_emotion_impact
+* share_problems
+  - utter_thanks_for_answering
 > check_venting_group
 
-## good mood negative panas not bad anymore affirmed chat
+<!--## good mood negative panas not bad anymore affirmed chat
 > check_asked_mood
 * mood_great
   - action_get_panas_score
@@ -114,7 +127,7 @@
   - utter_negative_panas
 * deny
   - utter_happy_offer_chat
-> check_venting_group
+> check_venting_group -->
 
 ## good mood negative panas not bad anymore denied chat
 > check_asked_mood
@@ -126,6 +139,7 @@
   - utter_happy_offer_chat
 * deny
   - utter_denied_chat
+  - action_skip_to_activity
 > check_non-venting_group
 
 ## good mood negative panas still bad affirmed
@@ -138,11 +152,16 @@
 * affirm
   - utter_ask_why_bad
 * affirm
-  
   - utter_ask_emotion_intensity
+* share_problems
+  - utter_ask_emotion_bother
+* share_problems
+  - utter_ask_emotion_impact
+* share_problems
+  - utter_thanks_for_answering
 > check_venting_group
 
-## good mood negative panas still bad affirmed
+<!--## good mood negative panas still bad affirmed
 > check_asked_mood
 * mood_great
   - action_get_panas_score
@@ -150,7 +169,7 @@
   - utter_negative_panas
 * affirm
   - utter_ask_why_bad
-> check_venting_group
+> check_venting_group -->
 
 ## good mood negative panas still bad denied skip to the activity
 > check_asked_mood
@@ -177,10 +196,16 @@
 * deny
   - utter_denied_why_bad
 * tell_more
-  - utter_tell_me_sad
+  - utter_ask_emotion_intensity
+* share_problems
+  - utter_ask_emotion_bother
+* share_problems
+  - utter_ask_emotion_impact
+* share_problems
+  - utter_thanks_for_answering
 > check_venting_group
 
-## good mood negative panas still bad denied tell more
+<!-- ## good mood negative panas still bad denied tell more
 > check_asked_mood
 * mood_great
   - action_get_panas_score
@@ -190,7 +215,7 @@
   - utter_ask_why_bad
 * deny
   - utter_denied_why_bad
-> check_venting_group
+> check_venting_group -->
 
 ## bad mood denied skip to activity
 > check_asked_mood
@@ -199,9 +224,9 @@
   - utter_ask_why_bad
   - action_set_moodshareflag
 * deny
-  - utter_denied_why_bad
-* skip_to_activity
+utter_denied_chat:
   - utter_skip_to_activity
+  - action_skip_to_activity
 > check_non-venting_group
 
 ## bad mood denied tell more
