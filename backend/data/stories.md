@@ -215,8 +215,11 @@
 * tell_more
   <!-- - utter_tell_me_sad -->
   - utter_ask_emotion_intensity
+* share_problems
   - utter_ask_emotion_bother
+  * share_problems
   - utter_ask_emotion_impact
+  * share_problems
   - utter_thanks_for_answering
 > check_venting_group
 
@@ -238,8 +241,11 @@
   - action_set_moodshareflag
 * affirm
   - utter_ask_emotion_intensity
+* share_problems
   - utter_ask_emotion_bother
+* share_problems
   - utter_ask_emotion_impact
+* share_problems
   - utter_thanks_for_answering
   <!-- - utter_tell_me_sad -->
 > check_venting_group
