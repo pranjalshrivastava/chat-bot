@@ -73,6 +73,7 @@
   - utter_happy_offer_chat
 * affirm
   <!-- - utter_tell_me_happy -->
+  ##Pranjal added
   - utter_ask_emotion_intensity
 * share_problems
   - utter_ask_emotion_bother
@@ -82,13 +83,14 @@
   - utter_thanks_for_answering
 > check_venting_group
 
-## good mood positive panas affirmed chat
+##commented by Pranjal
+<!--## good mood positive panas affirmed chat
 > check_asked_mood
 * mood_great
   - action_get_panas_score
   - slot{"panas_score" : "1"}
   - utter_happy_offer_chat
-> check_venting_group
+> check_venting_group -->
 
 ## good mood positive panas denied chat
 > check_asked_mood
@@ -119,6 +121,7 @@
   - utter_thanks_for_answering
 > check_venting_group
 
+##commented by Pranjal
 <!--## good mood negative panas not bad anymore affirmed chat
 > check_asked_mood
 * mood_great
@@ -161,6 +164,7 @@
   - utter_thanks_for_answering
 > check_venting_group
 
+## commented by Pranjal
 <!--## good mood negative panas still bad affirmed
 > check_asked_mood
 * mood_great
@@ -224,7 +228,7 @@
   - utter_ask_why_bad
   - action_set_moodshareflag
 * deny
-utter_denied_chat:
+  - utter_denied_chat
   - utter_skip_to_activity
   - action_skip_to_activity
 > check_non-venting_group
