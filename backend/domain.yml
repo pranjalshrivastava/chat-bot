@@ -238,7 +238,7 @@ responses:
     - title: "It’s all I can think about lately. I just can't seem to keep my mind off of it and its almost impossible to focus on my tasks"
       payload: '/share_problems{"emotion_impact": 5}'
   utter_thanks_for_answering:
-  - text: Thanks for answering those questions for me, {name}.
+  - text: Thanks for answering those questions for me, .
   utter_slots_values:
   - text: "As far as I understand,\n The intensity of these emotions has been {emotion_intensity}\
       \ for you.\n These emotions have bothered you {emotion_bother}.\n The impact\
@@ -253,7 +253,7 @@ responses:
   utter_low_severity:
   - text: Even though this hasn't taken a huge toll on you, I'm sure it’s still hard to be dealing with these feelings. I'm really glad you shared this with me.
   utter_moderate_severity:
-  - text: That sounds really tough. I can see why it's got you feeling this way.
+  - text: That sounds really tough. I can see why it's got you feeling this way. Now you can go ahead and tell me what's been going on. You can tell me more about the way you are feeling and why
   utter_high_severity:
   - text: It sounds like this has been really upsetting and I can see why. The way you're feeling right now is totally valid.
   utter_iamabot:
