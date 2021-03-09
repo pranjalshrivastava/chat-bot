@@ -82,7 +82,7 @@
 * share_problems
   - utter_thanks_for_answering
 > check_venting_group
-
+  - utter_negative_emotion
 ##commented by Pranjal
 <!--## good mood positive panas affirmed chat
 > check_asked_mood
@@ -120,7 +120,7 @@
 * share_problems
   - utter_thanks_for_answering
 > check_venting_group
-
+  - utter_negative_emotion
 ##commented by Pranjal
 <!--## good mood negative panas not bad anymore affirmed chat
 > check_asked_mood
@@ -144,7 +144,7 @@
   - utter_denied_chat
   - action_skip_to_activity
 > check_non-venting_group
-
+  - utter_negative_emotion
 ## good mood negative panas still bad affirmed
 ## Anu_2/28/2021
 > check_asked_mood
@@ -163,7 +163,7 @@
 * share_problems
   - utter_thanks_for_answering
 > check_venting_group
-
+  - utter_negative_emotion
 ## commented by Pranjal
 <!--## good mood negative panas still bad affirmed
 > check_asked_mood
@@ -185,7 +185,7 @@
   - utter_ask_why_bad
 * deny
   - utter_denied_chat
-  <!-- - utter_denied_why_bad -->
+  <!-- utter_denied_why_bad -->
 * skip_to_activity
   - utter_skip_to_activity
 > check_non-venting_group
@@ -209,7 +209,7 @@
 * share_problems
   - utter_thanks_for_answering
 > check_venting_group
-
+  - utter_negative_emotion
 <!-- ## good mood negative panas still bad denied tell more
 > check_asked_mood
 * mood_great
@@ -247,12 +247,12 @@
   - utter_ask_emotion_intensity
 * share_problems
   - utter_ask_emotion_bother
-  * share_problems
+* share_problems
   - utter_ask_emotion_impact
-  * share_problems
+* share_problems
   - utter_thanks_for_answering
 > check_venting_group
-
+  - utter_negative_emotion
 ## bad mood denied tell more
 > check_asked_mood
 * mood_unhappy
@@ -262,7 +262,7 @@
 * deny
   - utter_denied_why_bad
 > check_venting_group
-
+  - utter_negative_emotion
 ## bad mood affirmed
 > check_asked_mood
 * mood_unhappy
@@ -279,7 +279,7 @@
   - utter_thanks_for_answering
   <!-- - utter_tell_me_sad -->
 > check_venting_group
-
+  - utter_negative_emotion
 ## bad mood affirmed
 > check_asked_mood
 * mood_unhappy
@@ -287,7 +287,7 @@
   - utter_ask_why_bad
   - action_set_moodshareflag
 > check_venting_group
-
+  - utter_negative_emotion
 ## yes affirmed
 * affirm
  - slot{"mood_share_flag":"1"}
