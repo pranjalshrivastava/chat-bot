@@ -184,7 +184,8 @@
 * affirm
   - utter_ask_why_bad
 * deny
-  - utter_denied_why_bad
+  - utter_denied_chat
+  <!-- - utter_denied_why_bad -->
 * skip_to_activity
   - utter_skip_to_activity
 > check_non-venting_group
@@ -298,7 +299,7 @@
   - form{"name": "severity_form_with_buttons"}
   - form{"name": null}
 
-<!-- ## venting group
+ ## venting group
 > check_venting_group
 * share_problems{"sentiment" : "low"}
   - utter_low_severity
@@ -311,7 +312,7 @@
 ## venting group
 > check_venting_group
 * share_problems{"sentiment" : "high"}
-  - utter_high_severity -->
+  - utter_high_severity
 
 ## say goodbye
 * goodbye
