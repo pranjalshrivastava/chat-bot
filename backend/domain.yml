@@ -238,7 +238,7 @@ responses:
     - title: "It’s all I can think about lately. I just can't seem to keep my mind off of it and its almost impossible to focus on my tasks"
       payload: '/share_problems{"emotion_impact": 5}'
   utter_thanks_for_answering:
-  - text: Thanks for answering those questions for me, {name}. Now, you can go ahead and tell me what's been going on. You can tell me more about the way you are feeling and why.
+  - text: Thanks for answering those questions for me. Now, you can go ahead and tell me what's been going on. You can tell me more about the way you are feeling and why.
   utter_slots_values:
   - text: "As far as I understand,\n The intensity of these emotions has been {emotion_intensity}\
       \ for you.\n These emotions have bothered you {emotion_bother}.\n The impact\
@@ -256,6 +256,8 @@ responses:
   - text: That sounds really tough. I can see why it's got you feeling this way. Now you can go ahead and tell me what's been going on. You can tell me more about the way you are feeling and why
   utter_high_severity:
   - text: It sounds like this has been really upsetting and I can see why. The way you're feeling right now is totally valid.
+  utter_negative_emotion:
+  - text: Okay, Lot of people struggle with negative emotions. Sometimes we can change the underlying situation that causes the emotions, but sometimes that is outside of our control. While we may not always have control over the situation, we can change our emotional response to it. Its not always easy to do, but luckily there are number of simple activities that can help this. I'd like to show you a calming game.
   utter_iamabot:
   - text: I am a bot, powered by Rasa.
   utter_respond_insult:
