@@ -229,9 +229,9 @@ app.post("/users/register", (req, res) => {
             console.log(results.rows);
 
             if (results.rows.length > 0) {
-                errors.push({ message: "username alredy exists, please use a different username" });
-                return res.render("consent.ejs", { errors, name, uid, pwd });
-            } else {
+//                errors.push({ message: "username alredy exists, please use a different username" });
+//               return res.render("consent.ejs", { errors, name, uid, pwd });
+//         } else {
                 let queryText = `INSERT INTO users (name, uid, pwd, times_logged) VALUES ($1, $2, $3, 0) RETURNING uid`
                 pool.query(queryText, [name, uid, pwd], (err, results) => {
                     if (err) {
