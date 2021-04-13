@@ -1,0 +1,261 @@
+version: "2.0"
+stories:
+- story: first time greet
+  steps:
+  - intent: greet
+  - slot_was_set:
+    - hello_flag: '0'
+  - action: action_set_helloflag
+  - action: utter_ask_feeling
+  - checkpoint: check_asked_mood
+- story: regreet greet
+  steps:
+  - intent: greet
+  - slot_was_set:
+    - hello_flag: '1'
+  - action: utter_helloagain
+  - checkpoint: check_asked_mood
+- story: first time greetfail1
+  steps:
+  - intent: out_of_scope
+  - action: action_get_scope_counter
+  - action: utter_hmm
+  - action: action_sleep
+  - action: utter_ask_feeling
+  - checkpoint: check_asked_mood
+- story: first time greetfail2
+  steps:
+  - intent: out_of_scope
+  - action: action_get_scope_counter
+  - action: utter_hmm
+  - action: action_sleep
+  - action: utter_ask_feeling
+  - intent: out_of_scope
+  - action: action_get_scope_counter
+  - action: utter_hmm
+  - action: action_sleep
+  - action: utter_ask_feeling
+  - checkpoint: check_asked_mood
+- story: first time greetfail3
+  steps:
+  - intent: out_of_scope
+  - action: action_get_scope_counter
+  - action: utter_hmm
+  - action: action_sleep
+  - action: utter_ask_feeling
+  - intent: out_of_scope
+  - action: action_get_scope_counter
+  - slot_was_set:
+    - scope_counter: 3.0
+  - action: utter_goodbye
+- story: greet and question
+  steps:
+  - intent: greet_with_question
+  - action: utter_iamgood
+  - action: action_sleep
+  - action: utter_ask_feeling
+  - checkpoint: check_asked_mood
+- story: regreet after moodcheck
+  steps:
+  - checkpoint: check_asked_mood
+  - intent: greet
+  - slot_was_set:
+    - hello_flag: '1'
+  - action: utter_helloagain
+  - checkpoint: check_asked_mood
+- story: good mood positive panas affirmed chat
+  steps:
+  - checkpoint: check_asked_mood
+  - intent: mood_great
+  - action: action_get_panas_score
+  - slot_was_set:
+    - panas_score: '1'
+  - action: utter_happy_offer_chat
+  - intent: affirm
+  - action: utter_tell_me_happy
+  - checkpoint: check_venting_group
+- story: good mood positive panas affirmed chat
+  steps:
+  - checkpoint: check_asked_mood
+  - intent: mood_great
+  - action: action_get_panas_score
+  - slot_was_set:
+    - panas_score: '1'
+  - action: utter_happy_offer_chat
+  - checkpoint: check_venting_group
+- story: good mood positive panas denied chat
+  steps:
+  - checkpoint: check_asked_mood
+  - intent: mood_great
+  - action: action_get_panas_score
+  - slot_was_set:
+    - panas_score: '1'
+  - action: utter_happy_offer_chat
+  - intent: deny
+  - action: utter_denied_chat
+  - checkpoint: check_non-venting_group
+- story: good mood negative panas not bad anymore affirmed chat
+  steps:
+  - checkpoint: check_asked_mood
+  - intent: mood_great
+  - action: action_get_panas_score
+  - slot_was_set:
+    - panas_score: '0'
+  - action: utter_negative_panas
+  - intent: deny
+  - action: utter_happy_offer_chat
+  - intent: affirm
+  - action: utter_tell_me_happy
+  - checkpoint: check_venting_group
+- story: good mood negative panas not bad anymore affirmed chat
+  steps:
+  - checkpoint: check_asked_mood
+  - intent: mood_great
+  - action: action_get_panas_score
+  - slot_was_set:
+    - panas_score: '0'
+  - action: utter_negative_panas
+  - intent: deny
+  - action: utter_happy_offer_chat
+  - checkpoint: check_venting_group
+- story: good mood negative panas not bad anymore denied chat
+  steps:
+  - checkpoint: check_asked_mood
+  - intent: mood_great
+  - action: action_get_panas_score
+  - slot_was_set:
+    - panas_score: '0'
+  - action: utter_negative_panas
+  - intent: deny
+  - action: utter_happy_offer_chat
+  - intent: deny
+  - action: utter_denied_chat
+  - checkpoint: check_non-venting_group
+- story: good mood negative panas still bad affirmed
+  steps:
+  - checkpoint: check_asked_mood
+  - intent: mood_great
+  - action: action_get_panas_score
+  - slot_was_set:
+    - panas_score: '0'
+  - action: utter_negative_panas
+  - intent: affirm
+  - action: utter_ask_why_bad
+  - intent: affirm
+  - action: utter_tell_me_sad
+  - checkpoint: check_venting_group
+- story: good mood negative panas still bad affirmed
+  steps:
+  - checkpoint: check_asked_mood
+  - intent: mood_great
+  - action: action_get_panas_score
+  - slot_was_set:
+    - panas_score: '0'
+  - action: utter_negative_panas
+  - intent: affirm
+  - action: utter_ask_why_bad
+  - checkpoint: check_venting_group
+- story: good mood negative panas still bad denied skip to the activity
+  steps:
+  - checkpoint: check_asked_mood
+  - intent: mood_great
+  - action: action_get_panas_score
+  - slot_was_set:
+    - panas_score: '0'
+  - action: utter_negative_panas
+  - intent: affirm
+  - action: utter_ask_why_bad
+  - intent: deny
+  - action: utter_denied_why_bad
+  - intent: skip_to_activity
+  - action: utter_skip_to_activity
+  - checkpoint: check_non-venting_group
+- story: good mood negative panas still bad denied tell more
+  steps:
+  - checkpoint: check_asked_mood
+  - intent: mood_great
+  - action: action_get_panas_score
+  - slot_was_set:
+    - panas_score: '0'
+  - action: utter_negative_panas
+  - intent: affirm
+  - action: utter_ask_why_bad
+  - intent: deny
+  - action: utter_denied_why_bad
+  - intent: tell_more
+  - action: utter_tell_me_sad
+  - checkpoint: check_venting_group
+- story: good mood negative panas still bad denied tell more
+  steps:
+  - checkpoint: check_asked_mood
+  - intent: mood_great
+  - action: action_get_panas_score
+  - slot_was_set:
+    - panas_score: '0'
+  - action: utter_negative_panas
+  - intent: affirm
+  - action: utter_ask_why_bad
+  - intent: deny
+  - action: utter_denied_why_bad
+  - checkpoint: check_venting_group
+- story: bad mood denied skip to activity
+  steps:
+  - checkpoint: check_asked_mood
+  - intent: mood_unhappy
+  - action: utter_ask_why_bad
+  - intent: deny
+  - action: utter_denied_why_bad
+  - intent: skip_to_activity
+  - action: utter_skip_to_activity
+  - checkpoint: check_non-venting_group
+- story: bad mood denied tell more
+  steps:
+  - checkpoint: check_asked_mood
+  - intent: mood_unhappy
+  - action: utter_ask_why_bad
+  - intent: deny
+  - action: utter_denied_why_bad
+  - intent: tell_more
+  - action: utter_tell_me_sad
+  - checkpoint: check_venting_group
+- story: bad mood denied tell more
+  steps:
+  - checkpoint: check_asked_mood
+  - intent: mood_unhappy
+  - action: utter_ask_why_bad
+  - intent: deny
+  - action: utter_denied_why_bad
+  - checkpoint: check_venting_group
+- story: bad mood affirmed
+  steps:
+  - checkpoint: check_asked_mood
+  - intent: mood_unhappy
+  - action: utter_ask_why_bad
+  - intent: affirm
+  - action: utter_tell_me_sad
+  - checkpoint: check_venting_group
+- story: bad mood affirmed
+  steps:
+  - checkpoint: check_asked_mood
+  - intent: mood_unhappy
+  - action: utter_ask_why_bad
+  - checkpoint: check_venting_group
+- story: venting group
+  steps:
+  - checkpoint: check_venting_group
+  - intent: share_problems
+  - action: severity_form_with_buttons
+  - active_loop: severity_form_with_buttons
+  - active_loop: null
+- story: say goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+- story: bot challenge
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+- story: insult
+  steps:
+  - intent: insult
+  - action: utter_respond_insult
